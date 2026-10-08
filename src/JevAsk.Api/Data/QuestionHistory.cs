@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace JevAsk.Api.Data;
 
-public sealed record HistorySummary(long Id, string Question, string Ticker, double Probability, DateTime CreatedAtUtc);
+public sealed record HistorySummary(long Id, string Question, string Ticker, double Probability, DateTime CreatedAtUtc, string? Url);
 
 public sealed class QuestionHistory
 {
@@ -36,7 +36,7 @@ public sealed class QuestionHistory
         return await _db.Questions.AsNoTracking()
             .OrderByDescending(row => row.CreatedAtUtc)
             .Take(12)
-            .Select(row => new HistorySummary(row.Id, row.Question, row.Ticker, row.Probability, row.CreatedAtUtc))
+            .Select(row => new HistorySummary(row.Id, row.Question, row.Ticker, row.Probability, row.CreatedAtUtc, null))
             .ToListAsync(cancellationToken);
     }
 

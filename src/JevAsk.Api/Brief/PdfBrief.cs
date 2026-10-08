@@ -34,6 +34,8 @@ public static class PdfBrief
                         $"Range {response.BandLow * 100:0.0}% to {response.BandHigh * 100:0.0}%. " +
                         $"Spot {response.Spot:0.00} on {response.SpotDate:yyyy-MM-dd}. " +
                         $"Target {response.TargetPrice:0.00}.");
+                    if (!string.IsNullOrWhiteSpace(response.Url))
+                        column.Item().Text(response.Url).FontSize(10);
                     column.Item().Text(response.Reasoning);
                     column.Item().Text("Steps").SemiBold();
                     foreach (var step in response.Steps)

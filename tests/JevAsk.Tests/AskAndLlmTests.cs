@@ -2,6 +2,7 @@ using System.Net;
 using System.Text;
 using System.Text.Json;
 using JevAsk.Api.Brief;
+using JevAsk.Api.Data;
 using JevAsk.Api.Market;
 using JevAsk.Api.Parsing;
 using JevAsk.Core.Ask;
@@ -170,6 +171,27 @@ public class AskAndLlmTests
             var count = doc.RootElement.GetProperty("bars").GetArrayLength();
             Assert.True(count > 200, ticker);
         }
+    }
+
+    [Fact]
+    public void Public_links_use_the_configured_base_and_skip_when_unset()
+    {
+        Assert.Equal(
+            "http://localhost:8888/grokbot/asp/jev-ask/q/4",
+            PublicLinks.Question("http://localhost:8888/grokbot/asp/jev-ask/", 4));
+        Assert.Null(PublicLinks.Question("", 4));
+        Assert.Null(PublicLinks.Question("http://localhost:8888/grokbot/asp/jev-ask", 0));
+    }
+
+    [Fact]
+    public void Mysql_schema_stays_compatible_with_5_7()
+    {
+        var sql = MySqlSchema.CreateQuestions + MySqlSchema.CreateSeries + MySqlSchema.CreateQuestionsIndex;
+        Assert.Contains("utf8mb4_unicode_ci", sql, StringComparison.Ordinal);
+        Assert.Contains("longtext", sql, StringComparison.Ordinal);
+        Assert.Contains("datetime(6)", sql, StringComparison.Ordinal);
+        Assert.DoesNotContain("utf8mb4_0900", sql, StringComparison.Ordinal);
+        Assert.DoesNotContain("INVISIBLE", sql, StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact]

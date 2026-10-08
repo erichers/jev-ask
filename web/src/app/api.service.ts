@@ -4,23 +4,23 @@ import { AskResponse, HistorySummary, TapeRow } from './models';
 @Injectable({ providedIn: 'root' })
 export class ApiService {
   examples(): Promise<string[]> {
-    return this.get<string[]>('/api/examples');
+    return this.get<string[]>('api/examples');
   }
 
   tape(): Promise<TapeRow[]> {
-    return this.get<TapeRow[]>('/api/tape');
+    return this.get<TapeRow[]>('api/tape');
   }
 
   history(): Promise<HistorySummary[]> {
-    return this.get<HistorySummary[]>('/api/history');
+    return this.get<HistorySummary[]>('api/history');
   }
 
   historyById(id: string): Promise<AskResponse> {
-    return this.get<AskResponse>('/api/history/' + id);
+    return this.get<AskResponse>('api/history/' + id);
   }
 
   ask(question: string): Promise<AskResponse> {
-    return this.post<AskResponse>('/api/ask', { question });
+    return this.post<AskResponse>('api/ask', { question });
   }
 
   recompute(body: {
@@ -31,11 +31,11 @@ export class ApiService {
     level: number;
     expiry: string;
   }): Promise<AskResponse> {
-    return this.post<AskResponse>('/api/recompute', body);
+    return this.post<AskResponse>('api/recompute', body);
   }
 
   async pdf(result: AskResponse): Promise<Blob> {
-    const response = await fetch('/api/brief.pdf', {
+    const response = await fetch(this.endpoint('api/brief.pdf'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(result)
@@ -46,10 +46,17 @@ export class ApiService {
     return response.blob();
   }
 
-  private async get<T>(url: string): Promise<T> {
+  private endpoint(path: string): string {
+    const baseEl = document.querySelector('base');
+    const raw = baseEl?.href || location.origin + '/';
+    const base = raw.endsWith('/') ? raw : raw + '/';
+    return new URL(path, base).toString();
+  }
+
+  private async get<T>(path: string): Promise<T> {
     let response: Response;
     try {
-      response = await fetch(url);
+      response = await fetch(this.endpoint(path));
     } catch {
       throw new Error('The API did not respond. Start it with dotnet run, or use docker compose.');
     }
@@ -57,10 +64,10 @@ export class ApiService {
     return response.json() as Promise<T>;
   }
 
-  private async post<T>(url: string, body: unknown): Promise<T> {
+  private async post<T>(path: string, body: unknown): Promise<T> {
     let response: Response;
     try {
-      response = await fetch(url, {
+      response = await fetch(this.endpoint(path), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)

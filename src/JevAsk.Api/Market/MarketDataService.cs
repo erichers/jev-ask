@@ -262,6 +262,7 @@ public sealed class CacheDb : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.HasCharSet("utf8mb4");
         modelBuilder.Entity<CachedSeries>(entity =>
         {
             entity.HasKey(row => row.Ticker);

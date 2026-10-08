@@ -189,6 +189,19 @@ li span { color: var(--muted); grid-column: 2; }
 }
 
 @media (min-width: 860px) {
-  .result { padding: 28px 28px 32px; }
-  .split { grid-template-columns: 1fr 1fr; align-items: start; }
+  .result {
+    padding: 28px 28px 32px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    column-gap: 28px;
+    align-items: start;
+  }
+  .badges, .chips, .assume, .readout, .note, .reasoning, .steps { grid-column: 1; }
+  .split { display: contents; }
+  .chart-wrap {
+    grid-column: 2;
+    grid-row: 1 / span 6;
+    margin-top: 8px;
+  }
+  .chart-box { height: 320px; }
 }

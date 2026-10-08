@@ -8,7 +8,6 @@ using JevAsk.Core.Ask;
 using JevAsk.Core.Parsing;
 using JevAsk.Core.Probability;
 using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,15 +21,21 @@ var databaseProvider = First(
     Environment.GetEnvironmentVariable("DATABASE_PROVIDER"),
     builder.Configuration["Database:Provider"],
     "sqlite");
-var mysqlConnection = First(
+var mysqlConnection = WithUtf8Mb4(First(
     Environment.GetEnvironmentVariable("MYSQL_CONNECTION"),
-    builder.Configuration.GetConnectionString("MySql"));
+    builder.Configuration.GetConnectionString("MySql")));
+var mysqlServerVersion = First(
+    Environment.GetEnvironmentVariable("MYSQL_SERVER_VERSION"),
+    builder.Configuration["Database:ServerVersion"]);
 if (databaseProvider.Equals("mysql", StringComparison.OrdinalIgnoreCase))
 {
     if (string.IsNullOrWhiteSpace(mysqlConnection))
         throw new InvalidOperationException("DATABASE_PROVIDER is mysql, but MYSQL_CONNECTION is empty.");
+    var serverVersion = string.IsNullOrWhiteSpace(mysqlServerVersion)
+        ? ServerVersion.AutoDetect(mysqlConnection)
+        : ServerVersion.Parse(mysqlServerVersion);
     builder.Services.AddDbContext<CacheDb>(options =>
-        options.UseMySql(mysqlConnection, new MySqlServerVersion(new Version(8, 4, 0))));
+        options.UseMySql(mysqlConnection, serverVersion));
 }
 else
 {
@@ -76,6 +81,10 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod());
 });
 
+var publicBaseUrl = PublicLinks.Normalize(First(
+    Environment.GetEnvironmentVariable("PUBLIC_BASE_URL"),
+    builder.Configuration["PublicBaseUrl"]));
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -91,7 +100,8 @@ app.MapGet("/api/health", (IQuestionParser parser) => Results.Ok(new
 {
     status = "ok",
     parser = parser.Name,
-    database = databaseProvider
+    database = databaseProvider,
+    publicBaseUrl
 }));
 
 app.MapGet("/api/examples", () => Results.Ok(ExampleQuestions.All));
@@ -128,12 +138,17 @@ app.MapGet("/api/tape", async (IMarketData market, CancellationToken ct) =>
 });
 
 app.MapGet("/api/history", async (QuestionHistory history, CancellationToken ct) =>
-    Results.Ok(await history.ListAsync(ct)));
+{
+    var rows = await history.ListAsync(ct);
+    return Results.Ok(rows.Select(row => row with { Url = PublicLinks.Question(publicBaseUrl, row.Id) }));
+});
 
 app.MapGet("/api/history/{id:long}", async (long id, QuestionHistory history, CancellationToken ct) =>
 {
     var row = await history.FindAsync(id, ct);
-    return row is null ? Results.NotFound(new { error = "That question is not in the history." }) : Results.Ok(row);
+    return row is null
+        ? Results.NotFound(new { error = "That question is not in the history." })
+        : Results.Ok(Stamp(row));
 });
 
 app.MapPost("/api/ask", async (AskBody body, AskService ask, QuestionHistory history, CancellationToken ct) =>
@@ -142,7 +157,7 @@ app.MapPost("/api/ask", async (AskBody body, AskService ask, QuestionHistory his
     {
         var asOf = body.AsOf ?? DateOnly.FromDateTime(DateTime.UtcNow);
         var response = await ask.AskAsync(body.Question, asOf, ct);
-        return Results.Ok(await history.SaveAsync(response, ct));
+        return Results.Ok(Stamp(await history.SaveAsync(response, ct)));
     }
     catch (AskException ex)
     {
@@ -157,7 +172,7 @@ app.MapPost("/api/recompute", async (RecomputeBody body, AskService ask, Questio
         var asOf = body.AsOf ?? DateOnly.FromDateTime(DateTime.UtcNow);
         var response = await ask.RecomputeAsync(
             body.Ticker, body.Condition, body.Style, body.LevelMode, body.Level, body.Expiry, asOf, ct);
-        return Results.Ok(await history.SaveAsync(response, ct));
+        return Results.Ok(Stamp(await history.SaveAsync(response, ct)));
     }
     catch (AskException ex)
     {
@@ -169,14 +184,30 @@ app.MapPost("/api/brief.pdf", (AskResponse response) =>
 {
     if (string.IsNullOrWhiteSpace(response.Question) || response.Steps is null || response.Steps.Count == 0)
         return Results.BadRequest(new { error = "Nothing to export yet." });
-    var pdf = PdfBrief.Render(response);
+    var pdf = PdfBrief.Render(Stamp(response));
     return Results.File(pdf, "application/pdf", "jev-ask.pdf");
 });
 
 app.Run();
 
+AskResponse Stamp(AskResponse response) =>
+    response with { Url = PublicLinks.Question(publicBaseUrl, response.Id) };
+
 static string First(params string?[] values) =>
     values.FirstOrDefault(value => !string.IsNullOrWhiteSpace(value))?.Trim() ?? "";
+
+static string WithUtf8Mb4(string connectionString)
+{
+    if (string.IsNullOrWhiteSpace(connectionString))
+        return "";
+    if (connectionString.Contains("CharSet=", StringComparison.OrdinalIgnoreCase)
+        || connectionString.Contains("Character Set=", StringComparison.OrdinalIgnoreCase))
+        return connectionString;
+    var trimmed = connectionString.Trim();
+    if (!trimmed.EndsWith(';'))
+        trimmed += ";";
+    return trimmed + "CharSet=utf8mb4;";
+}
 
 public sealed record AskBody(string? Question, DateOnly? AsOf);
 

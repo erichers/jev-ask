@@ -40,7 +40,7 @@ Answer card, same four views.
 
 - ASP.NET Core 8 Web API
 - Angular 22, standalone components and signals, zoneless
-- SQLite by default, or MySQL 8.4 through Pomelo EF Core
+- SQLite by default, or MySQL 5.7 through Pomelo EF Core
 - Chart.js for the price chart
 - Newsreader, Inter, and JetBrains Mono
 - QuestPDF Community for the PDF brief
@@ -171,6 +171,8 @@ Copy `.env.example` for the full list. Do not commit a filled `.env`. Empty plac
 | POST | `/api/recompute` | ticker, condition, style, levelMode, level, expiry, optional asOf | answer after a chip edit |
 | POST | `/api/brief.pdf` | the answer JSON | `application/pdf` |
 
+History rows and saved answers include `url` when `PUBLIC_BASE_URL` is set. The UI calls these routes as `api/...` under its base href.
+
 `asOf` is optional and defaults to today's UTC date. Enums on the wire are camel case: `above`, `below`, `close`, `touch`, `absolute`, `percent`.
 
 ## Run on your machine
@@ -194,23 +196,54 @@ The UI listens on `http://localhost:4200` and proxies `/api` to port 5080.
 
 Angular 22 needs Node `22.22.3` or newer. The API needs the .NET 8 SDK.
 
-## MySQL with MAMP
+## Deploy under MAMP
 
-MAMP's MySQL often listens on `127.0.0.1` port `8889`. Create a database named `jevask`. The example login is user `root` and password `root`. Those values are placeholders for a local MAMP install. They appear only in `.env.example` and `appsettings.Development.example.json`.
+MAMP Apache serves the built UI at `http://localhost:8888/grokbot/asp/jev-ask/`. MAMP MySQL 5.7.39 listens on `127.0.0.1` port `8889`. The API keeps its own routes (`/api/...`) and Apache proxies the sub-path onto them. `dotnet run` with no database variables still uses SQLite.
+
+Build the UI for that folder. The base href has to end with a slash.
+
+```bash
+cd web
+npm ci
+npx ng build --base-href /grokbot/asp/jev-ask/
+```
+
+Copy `web/dist/web/browser/` into the Apache document root at `grokbot/asp/jev-ask/` (often `/Applications/MAMP/htdocs/grokbot/asp/jev-ask`).
+
+Create a database named `jevask`. The example login is user `root` and password `root`. Those values are placeholders for a local MAMP install. They appear only in `.env.example` and `appsettings.Development.example.json`.
 
 ```bash
 export DATABASE_PROVIDER=mysql
-export MYSQL_CONNECTION="Server=127.0.0.1;Port=8889;Database=jevask;User=root;Password=root;"
+export MYSQL_CONNECTION="Server=127.0.0.1;Port=8889;Database=jevask;User=root;Password=root;CharSet=utf8mb4;SslMode=None;"
+export PUBLIC_BASE_URL=http://localhost:8888/grokbot/asp/jev-ask
 dotnet run --project src/JevAsk.Api
 ```
 
+Leave `MYSQL_SERVER_VERSION` unset. Pomelo then calls `ServerVersion.AutoDetect` against that connection. Set `MYSQL_SERVER_VERSION=5.7.39-mysql` only when you want to pin the version without a detection query. The schema uses `utf8mb4` / `utf8mb4_unicode_ci`, `longtext`, and `datetime(6)`. It does not use MySQL 8 collations.
+
 On startup the API applies EF Core migrations and, if the series table is empty, seeds the bundled daily bars. Question history and cached bars both live in MySQL. A later live fetch replaces a seeded row. Rows that are still the bundled file are labeled `bundled sample`. Other saved rows are labeled `saved cache`.
 
-`dotnet run` with no database variables keeps using SQLite at `src/JevAsk.Api/data/jev-ask.db`.
+When `PUBLIC_BASE_URL` is set, saved answers and history rows include a `url` such as `http://localhost:8888/grokbot/asp/jev-ask/q/4`. The PDF prints that link. An empty base leaves `url` null, which is the zero-config default.
+
+Apache must proxy `/grokbot/asp/jev-ask/api/` to `http://127.0.0.1:5080/api/` and send other app paths to `index.html` so a refresh on `/q/4` still loads the UI. Enable `proxy` and `proxy_http`, then add this to the MAMP Apache config:
+
+```apache
+ProxyPreserveHost On
+ProxyPass /grokbot/asp/jev-ask/api/ http://127.0.0.1:5080/api/
+ProxyPassReverse /grokbot/asp/jev-ask/api/ http://127.0.0.1:5080/api/
+
+<Directory "/Applications/MAMP/htdocs/grokbot/asp/jev-ask">
+    Require all granted
+    Options -Indexes
+    FallbackResource /grokbot/asp/jev-ask/index.html
+</Directory>
+```
+
+The browser calls `api/...` relative to the base href, including `api/brief.pdf`. A route such as `/q/4` still requests `http://localhost:8888/grokbot/asp/jev-ask/api/...`, not `/api/...` at the host root.
 
 ## Docker Compose
 
-Docker Compose starts MySQL 8.4, the API, and the web UI. The MySQL root password in the compose file is `jevask`. That is a disposable local example so `docker compose up` needs no extra secrets. Do not reuse it anywhere else.
+Docker Compose starts MySQL 5.7, the API, and the web UI at the site root. The MySQL root password in the compose file is `jevask`. That is a disposable local example so `docker compose up` needs no extra secrets. Do not reuse it anywhere else.
 
 ```bash
 docker compose up --build
@@ -218,7 +251,7 @@ docker compose up --build
 
 - UI: `http://localhost:8088`
 - API: `http://localhost:8080`
-- MySQL: `127.0.0.1:3306`, database `jevask`, user `root`, password `jevask`
+- MySQL 5.7: `127.0.0.1:3306`, database `jevask`, user `root`, password `jevask`
 
 The API waits until MySQL is healthy, then migrates and seeds.
 
@@ -247,8 +280,10 @@ GitHub Actions builds the API, runs the tests, and builds the Angular app. See `
 | `GEMINI_MODEL` | Gemini model | `gemini-2.0-flash` |
 | `DATABASE_PROVIDER` | `sqlite` or `mysql` | `sqlite` |
 | `MYSQL_CONNECTION` | MySQL connection string, required when the provider is mysql | empty |
+| `MYSQL_SERVER_VERSION` | Pomelo server version such as `5.7.39-mysql`. Empty uses auto-detect | empty |
+| `PUBLIC_BASE_URL` | Public origin and path used for server-generated links | empty |
 
-Config keys with the same meaning: `Parser:Provider`, `Database:Provider`, `ConnectionStrings:Cache`, `ConnectionStrings:MySql`, `MonteCarlo:Paths`, `MonteCarlo:Seed`, `Data:SamplePath`.
+Config keys with the same meaning: `Parser:Provider`, `Database:Provider`, `Database:ServerVersion`, `PublicBaseUrl`, `ConnectionStrings:Cache`, `ConnectionStrings:MySql`, `MonteCarlo:Paths`, `MonteCarlo:Seed`, `Data:SamplePath`.
 
 ## Disclaimer
 

@@ -52,6 +52,7 @@ public sealed record AskResponse(
     string Disclaimer)
 {
     public long Id { get; init; }
+    public string? Url { get; init; }
 }
 
 public static class DemoCatalog
