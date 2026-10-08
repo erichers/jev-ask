@@ -1,7 +1,6 @@
 .fun {
   width: min(1080px, calc(100% - 40px));
   margin: 56px auto 64px;
-  animation: rise 200ms ease;
 }
 
 .kicker, .meta, .list h2 {
@@ -117,7 +116,21 @@ textarea::placeholder { color: color-mix(in srgb, var(--muted) 80%, transparent)
   transform-origin: center top;
 }
 
-.card.flip { animation: deal 200ms ease; }
+.card.flip { animation: deal 400ms var(--ease); }
+
+.meter {
+  height: 2px;
+  margin: 4px 0 16px;
+  background: var(--line);
+  max-width: 280px;
+}
+
+.meter div {
+  height: 100%;
+  width: 0;
+  background: var(--signal);
+  transition: width 360ms var(--ease);
+}
 
 .card h2 {
   margin: 0;
@@ -181,13 +194,8 @@ textarea::placeholder { color: color-mix(in srgb, var(--muted) 80%, transparent)
   clip: rect(0 0 0 0);
 }
 
-@keyframes rise {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: none; }
-}
-
 @keyframes deal {
-  from { transform: rotateX(78deg); opacity: 0.15; }
+  from { transform: rotateX(72deg); opacity: 0; }
   to { transform: none; opacity: 1; }
 }
 

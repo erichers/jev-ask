@@ -1,12 +1,15 @@
-import { Component, DestroyRef, effect, inject, input, signal } from '@angular/core';
+import { Component, DestroyRef, ElementRef, effect, inject, input, signal, viewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from './api.service';
+import { FlowDiagramComponent } from './flow-diagram.component';
 import { FunAnswer, FunCard, reducedMotion } from './models';
+import { countTo, onVisible, whenSettled } from './motion';
 import { ThemeService } from './theme.service';
 
 @Component({
   selector: 'app-fun',
   standalone: true,
+  imports: [FlowDiagramComponent],
   templateUrl: './fun-page.component.html',
   styleUrl: './fun-page.component.css'
 })
@@ -27,11 +30,19 @@ export class FunPageComponent {
   readonly copied = signal(false);
   readonly flipping = signal(false);
   readonly recent = signal<FunAnswer[]>([]);
-  private frame = 0;
+  readonly fill = signal(0);
+  readonly funSteps = ['Question', 'Match', 'Chance'];
+  readonly flowNote = 'A close question uses the bank. Anything else is hashed, so the same words stay put.';
+  private stopCount: () => void = () => undefined;
+  private stopMeter: () => void = () => undefined;
   private loadedId = '';
+  private readonly meterEl = viewChild<ElementRef<HTMLElement>>('meter');
 
   constructor() {
-    inject(DestroyRef).onDestroy(() => window.cancelAnimationFrame(this.frame));
+    inject(DestroyRef).onDestroy(() => {
+      this.stopCount();
+      this.stopMeter();
+    });
     void this.loadBank();
     void this.loadRecent();
     effect(() => {
@@ -209,7 +220,7 @@ export class FunPageComponent {
     this.loadedId = String(row.id);
     await this.router.navigate(['/fun', row.id], { state: { result: row }, replaceUrl: true });
     if (motion) {
-      await wait(220);
+      await wait(420);
       this.flipping.set(false);
     }
     void this.loadRecent();
@@ -217,21 +228,22 @@ export class FunPageComponent {
 
   private reveal(row: FunAnswer): void {
     this.answer.set(row);
-    window.cancelAnimationFrame(this.frame);
-    if (reducedMotion()) {
-      this.shown.set(row.likelihood);
+    this.stopCount();
+    this.stopCount = countTo(row.likelihood, (value) => this.shown.set(value));
+    window.setTimeout(() => this.armMeter(row.percent), 0);
+  }
+
+  private armMeter(percent: number): void {
+    this.stopMeter();
+    const el = this.meterEl()?.nativeElement;
+    if (!el || reducedMotion()) {
+      this.fill.set(percent);
       return;
     }
-    const start = performance.now();
-    const target = row.likelihood;
-    const tick = (now: number) => {
-      const t = Math.min(1, (now - start) / 250);
-      const eased = 1 - Math.pow(1 - t, 3);
-      this.shown.set(target * eased);
-      if (t < 1) this.frame = window.requestAnimationFrame(tick);
-    };
-    this.shown.set(0);
-    this.frame = window.requestAnimationFrame(tick);
+    this.fill.set(0);
+    this.stopMeter = onVisible(el, () => {
+      void whenSettled().then(() => this.fill.set(percent));
+    });
   }
 
   private async loadBank(): Promise<void> {

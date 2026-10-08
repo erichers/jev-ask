@@ -3,7 +3,6 @@
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 22px 20px 26px;
-  animation: rise 200ms ease;
 }
 
 .result.updating { opacity: 0.72; }
@@ -34,7 +33,6 @@
   border: 1px solid var(--line);
   border-radius: 6px;
   padding: 8px 10px;
-  animation: rise 200ms ease both;
 }
 
 .chips span {
@@ -108,7 +106,7 @@
   position: absolute;
   top: -3px;
   height: 8px;
-  transition: left 200ms ease, width 200ms ease;
+  transition: left 360ms var(--ease), width 360ms var(--ease);
 }
 
 .rail-band { background: var(--signal-soft); }
@@ -143,7 +141,6 @@
   font-family: var(--serif);
   font-size: 1.25rem;
   line-height: 1.45;
-  animation: rise 200ms ease;
 }
 
 .split {
@@ -173,14 +170,15 @@ li {
 li strong { font-weight: 600; }
 li span { color: var(--muted); grid-column: 2; }
 
-.step-in { animation: rise 200ms ease both; }
+.step-in { animation: rise-in 320ms var(--ease) both; }
+.step-in:nth-child(2) { animation-delay: 50ms; }
+.step-in:nth-child(3) { animation-delay: 100ms; }
+.step-in:nth-child(4) { animation-delay: 150ms; }
+.step-in:nth-child(5) { animation-delay: 200ms; }
+
+.span { grid-column: 1 / -1; margin-top: 28px; }
 
 .chart-box { height: 240px; }
-
-@keyframes rise {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: none; }
-}
 
 @media (min-width: 860px) {
   .result {
@@ -191,6 +189,7 @@ li span { color: var(--muted); grid-column: 2; }
     align-items: start;
   }
   .badges, .chips, .assume, .readout, .note, .reasoning, .steps { grid-column: 1; }
+  .span { grid-column: 1 / -1; }
   .split { display: contents; }
   .chart-wrap {
     grid-column: 2;

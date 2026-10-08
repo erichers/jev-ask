@@ -1,10 +1,10 @@
-<section class="fun">
+<section class="fun enter">
   <p class="kicker">Just for fun</p>
   <h1>Ask something <em>silly.</em></h1>
   <p class="lede">Pop culture, pets, snacks, and other questions the market tool will not touch.</p>
 
   <div class="tools">
-    <button type="button" class="shuffle" (click)="shuffle()" [disabled]="busy()">
+    <button type="button" class="shuffle press" (click)="shuffle()" [disabled]="busy()">
       {{ busy() ? 'Dealing' : 'Shuffle' }}
     </button>
     <nav class="cats" aria-label="Categories">
@@ -27,7 +27,7 @@
     ></textarea>
     <div class="ask-bar">
       <p>For fun. Not a prediction.</p>
-      <button type="submit" [disabled]="busy()">Ask</button>
+      <button type="submit" class="press" [disabled]="busy()">Ask</button>
     </div>
   </form>
 
@@ -35,17 +35,20 @@
     <p class="error" role="alert">{{ error() }}</p>
   }
 
+  <app-flow [steps]="funSteps" [value]="answer()?.likelihood ?? 0" [note]="flowNote" />
+
   <div class="stage">
     @if (answer(); as card) {
       <article class="card" [class.flip]="flipping()">
         <p class="meta">{{ card.category }} · {{ card.tag }}</p>
         <h2>{{ card.question }}</h2>
         <p class="number">{{ pct(shown()) }}</p>
+        <div class="meter" #meter aria-hidden="true"><div [style.width.%]="fill()"></div></div>
         <p class="reason">{{ card.reasoning }}</p>
         <p class="note">For fun. Not a prediction.</p>
         <div class="actions">
-          <button type="button" (click)="copyLink()">{{ copied() ? 'Copied' : 'Copy link' }}</button>
-          <button type="button" (click)="download()">Download PNG</button>
+          <button type="button" class="press" (click)="copyLink()">{{ copied() ? 'Copied' : 'Copy link' }}</button>
+          <button type="button" class="press" (click)="download()">Download PNG</button>
         </div>
       </article>
     } @else {

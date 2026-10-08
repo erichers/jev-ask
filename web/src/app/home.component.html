@@ -1,4 +1,4 @@
-<section class="home">
+<section class="home enter">
   <p class="kicker">A likelihood, with the steps</p>
   <h1>Ask a market <em>question.</em></h1>
   <p class="lede">A probability, a range, and the steps.</p>
@@ -16,7 +16,7 @@
     ></textarea>
     <div class="ask-bar">
       <p>Educational tool. Not financial advice.</p>
-      <button type="submit" [disabled]="loading()">{{ loading() ? 'Working' : 'Ask' }}</button>
+      <button type="submit" class="press" [disabled]="loading()">{{ loading() ? 'Working' : 'Ask' }}</button>
     </div>
   </form>
 

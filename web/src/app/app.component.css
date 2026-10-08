@@ -59,7 +59,6 @@
 
 .page {
   flex: 1;
-  animation: page-in 200ms ease;
 }
 
 .foot {
@@ -73,9 +72,8 @@
 
 .foot p { margin: 0; }
 
-@keyframes page-in {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: none; }
+.top, .foot {
+  transition: background-color 320ms var(--ease), color 320ms var(--ease), border-color 320ms var(--ease);
 }
 
 @media (min-width: 900px) {

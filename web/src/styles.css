@@ -25,6 +25,8 @@
   --serif: "Newsreader", "Iowan Old Style", Palatino, Georgia, serif;
   --sans: "Inter", "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --spring: cubic-bezier(.2, .9, .2, 1);
 }
 
 [data-theme="dark"] {
@@ -53,6 +55,7 @@ html, body {
   font-family: var(--sans);
   font-size: 16px;
   line-height: 1.5;
+  transition: background-color 320ms var(--ease), color 320ms var(--ease);
 }
 
 body {
@@ -61,7 +64,46 @@ body {
 
 button, input, select, textarea { font: inherit; color: inherit; }
 
-button, a { -webkit-tap-highlight-color: transparent; }
+button, a {
+  -webkit-tap-highlight-color: transparent;
+  transition: color 180ms var(--ease), background-color 180ms var(--ease), border-color 180ms var(--ease);
+}
+
+.press {
+  transition: color 180ms var(--ease), background-color 180ms var(--ease), border-color 180ms var(--ease), transform 180ms var(--spring);
+}
+
+.press:hover { transform: translateY(-1px); }
+.press:active { transform: translateY(0) scale(0.98); }
+
+.enter > * {
+  animation: rise-in 320ms var(--ease) both;
+}
+
+.enter > *:nth-child(2) { animation-delay: 40ms; }
+.enter > *:nth-child(3) { animation-delay: 80ms; }
+.enter > *:nth-child(4) { animation-delay: 120ms; }
+.enter > *:nth-child(5) { animation-delay: 160ms; }
+.enter > *:nth-child(6) { animation-delay: 200ms; }
+.enter > *:nth-child(7) { animation-delay: 240ms; }
+.enter > *:nth-child(8) { animation-delay: 280ms; }
+.enter > *:nth-child(9) { animation-delay: 320ms; }
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+::view-transition-old(root) {
+  animation: 240ms var(--ease) both vt-out;
+}
+
+::view-transition-new(root) {
+  animation: 280ms var(--ease) both vt-in;
+}
+
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; } }
 
 :focus-visible {
   outline: 2px solid var(--signal);

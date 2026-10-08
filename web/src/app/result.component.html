@@ -1,4 +1,4 @@
-<article class="result" [class.updating]="updating()" aria-live="polite">
+<article class="result enter" [class.updating]="updating()" aria-live="polite">
   <div class="badges">
     <span class="badge">{{ parserText() }}</span>
     <span class="badge" [class.live]="result().dataFreshness === 'live'">{{ dataText() }}</span>
@@ -29,8 +29,8 @@
         <input type="number" min="0" step="0.01" [value]="level()" (input)="level.set(asNumber($event)); onField()" />
       </label>
       <div class="mode" role="group" aria-label="Level type">
-        <button type="button" [class.on]="levelMode() === 'absolute'" (click)="setMode('absolute')">$</button>
-        <button type="button" [class.on]="levelMode() === 'percent'" (click)="setMode('percent')">%</button>
+        <button type="button" class="press" [class.on]="levelMode() === 'absolute'" (click)="setMode('absolute')">$</button>
+        <button type="button" class="press" [class.on]="levelMode() === 'percent'" (click)="setMode('percent')">%</button>
       </div>
       <label>
         <span>Date</span>
@@ -46,7 +46,7 @@
     <p class="eyebrow">Likelihood</p>
     <p class="number">{{ pct(shown()) }}</p>
     <p class="range">Range {{ pct(result().bandLow) }} to {{ pct(result().bandHigh) }}</p>
-    <div class="rail" aria-hidden="true">
+    <div class="rail" #rail aria-hidden="true">
       <div class="rail-band" [style.left.%]="railOn() ? bandLeft() : 0" [style.width.%]="railOn() ? bandWidth() : 0"></div>
       <div class="rail-mark" [style.left.%]="railOn() ? markLeft() : 0"></div>
     </div>
@@ -79,4 +79,10 @@
       </div>
     </section>
   </div>
+
+  <section class="span">
+    <h2>How the number is made</h2>
+    <app-flow [steps]="marketSteps" [value]="result().probability" [note]="flowNote" />
+  </section>
+  <app-path-field class="span" [theme]="theme()" />
 </article>

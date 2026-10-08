@@ -1,8 +1,8 @@
-<section class="stage">
+<section class="stage enter">
   <div class="tools">
     <a routerLink="/">New question</a>
     @if (result()) {
-      <button type="button" (click)="download()">PDF brief</button>
+      <button type="button" class="press" (click)="download()">PDF brief</button>
     }
   </div>
 

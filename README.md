@@ -48,6 +48,14 @@ A PDF brief can be downloaded. QuestPDF is used under its Community license.
 
 Educational tool. Not financial advice.
 
+## Motion
+
+Pages crossfade when the route changes. Sections fade and rise 12px over about a third of a second, with the children staggered. The likelihood counts up. The range bar, the fun meter, and the chance ring fill from zero when they scroll into view. The price chart draws its line, then the area underneath.
+
+"How the number is made" is an SVG on the answer: spot, vol, days, then the chance. Just for fun has the same kind of diagram for question, match, and chance. Buttons lift slightly on hover. Switching light and dark fades the colors.
+
+The answer page also has a path field. It lazy-loads three.js, caps the pixel ratio at 2, and pauses when it leaves the screen. Drag to orbit the lime surface and the sample paths. If motion is reduced, or WebGL cannot start, a still drawing is shown instead and nothing autoplays.
+
 ## Screenshot tour
 
 Home, light and dark, desktop and phone.
@@ -72,6 +80,7 @@ Answer card, same four views.
 - Angular 22, standalone components and signals, zoneless
 - SQLite by default, or MySQL 5.7 through Pomelo EF Core
 - Chart.js for the price chart
+- three.js for the path field on an answer, loaded only when that view is on screen
 - Newsreader, Inter, and JetBrains Mono
 - QuestPDF Community for the PDF brief
 - xUnit for the parser, the probability math, model fallback, samples, and the SQLite migration

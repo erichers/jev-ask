@@ -1,10 +1,14 @@
 import { Component, DestroyRef, ElementRef, Injector, afterNextRender, effect, inject, input, output, signal, viewChild } from '@angular/core';
 import { Chart } from 'chart.js/auto';
+import { FlowDiagramComponent } from './flow-diagram.component';
 import { AskResponse, dataLabel, parserLabel, reducedMotion } from './models';
+import { countTo, onVisible, whenSettled } from './motion';
+import { PathFieldComponent } from './path-field.component';
 
 @Component({
   selector: 'app-result',
   standalone: true,
+  imports: [FlowDiagramComponent, PathFieldComponent],
   templateUrl: './result.component.html',
   styleUrl: './result.component.css'
 })
@@ -33,22 +37,24 @@ export class ResultComponent {
   readonly chipsOn = signal(true);
   readonly railOn = signal(false);
 
+  readonly marketSteps = ['Spot', 'Vol', 'Days', 'Chance'];
+  readonly flowNote = 'Spot and realized vol set the curve. Trading days widen it. The chance is the area past the target.';
   readonly parserText = () => parserLabel(this.result());
   readonly dataText = () => dataLabel(this.result());
 
   private readonly canvas = viewChild<ElementRef<HTMLCanvasElement>>('chart');
+  private readonly rail = viewChild<ElementRef<HTMLElement>>('rail');
   private chart: Chart | null = null;
   private timer = 0;
-  private frame = 0;
-  private wordTimer = 0;
-  private stepTimer = 0;
+  private stopCount: () => void = () => undefined;
+  private stopRail: () => void = () => undefined;
+  private drawGen = 0;
 
   constructor(injector: Injector) {
     inject(DestroyRef).onDestroy(() => {
       window.clearTimeout(this.timer);
-      window.clearInterval(this.wordTimer);
-      window.clearInterval(this.stepTimer);
-      window.cancelAnimationFrame(this.frame);
+      this.stopCount();
+      this.stopRail();
       this.chart?.destroy();
     });
 
@@ -67,9 +73,13 @@ export class ResultComponent {
       effect(() => {
         const row = this.result();
         this.theme();
-        const canvas = this.canvas()?.nativeElement;
-        if (!canvas) return;
-        this.draw(canvas, row);
+        const gen = ++this.drawGen;
+        void whenSettled().then(() => {
+          if (gen !== this.drawGen) return;
+          const canvas = this.canvas()?.nativeElement;
+          if (!canvas) return;
+          this.draw(canvas, row);
+        });
       }, { injector });
     });
   }
@@ -126,36 +136,30 @@ export class ResultComponent {
   }
 
   private play(row: AskResponse): void {
-    window.clearInterval(this.wordTimer);
-    window.clearInterval(this.stepTimer);
-    window.cancelAnimationFrame(this.frame);
-    const calm = reducedMotion();
-    this.chipsOn.set(false);
-    this.railOn.set(calm);
-    if (calm) {
-      this.chipsOn.set(true);
-      this.shown.set(row.probability);
-      this.reasonText.set(row.reasoning);
-      this.visibleSteps.set(row.steps.length);
+    this.stopCount();
+    this.chipsOn.set(true);
+    this.reasonText.set(row.reasoning);
+    this.visibleSteps.set(row.steps.length);
+    this.stopCount = countTo(row.probability, (value) => this.shown.set(value));
+    window.setTimeout(() => this.armRail(), 0);
+  }
+
+  private armRail(tries = 0): void {
+    this.stopRail();
+    const el = this.rail()?.nativeElement;
+    if (!el) {
+      if (tries < 6) window.setTimeout(() => this.armRail(tries + 1), 16);
+      else this.railOn.set(true);
+      return;
+    }
+    if (reducedMotion()) {
       this.railOn.set(true);
       return;
     }
-
-    queueMicrotask(() => this.chipsOn.set(true));
-    window.setTimeout(() => this.railOn.set(true), 40);
-    this.reasonText.set(row.reasoning);
-    this.visibleSteps.set(row.steps.length);
-
-    const start = performance.now();
-    const target = row.probability;
-    const tick = (now: number) => {
-      const t = Math.min(1, (now - start) / 250);
-      const eased = 1 - Math.pow(1 - t, 3);
-      this.shown.set(target * eased);
-      if (t < 1) this.frame = window.requestAnimationFrame(tick);
-    };
-    this.shown.set(0);
-    this.frame = window.requestAnimationFrame(tick);
+    this.railOn.set(false);
+    this.stopRail = onVisible(el, () => {
+      void whenSettled().then(() => this.railOn.set(true));
+    });
   }
 
   private emitEdit(): void {
@@ -185,13 +189,24 @@ export class ResultComponent {
         labels: row.chart.map((point) => point.date),
         datasets: [
           {
+            label: '',
+            data: row.chart.map((point) => point.close),
+            borderColor: 'transparent',
+            backgroundColor: styles.getPropertyValue('--signal-soft').trim() || 'rgba(79, 122, 0, 0.16)',
+            pointRadius: 0,
+            borderWidth: 0,
+            tension: 0.15,
+            fill: 'origin'
+          },
+          {
             label: row.intent.ticker,
             data: row.chart.map((point) => point.close),
             borderColor: signal,
             backgroundColor: 'transparent',
             pointRadius: 0,
             borderWidth: 2,
-            tension: 0.15
+            tension: 0.15,
+            fill: false
           },
           {
             label: 'Target',
@@ -199,17 +214,32 @@ export class ResultComponent {
             borderColor: down,
             borderDash: [5, 4],
             pointRadius: 0,
-            borderWidth: 1.5
+            borderWidth: 1.5,
+            fill: false
           }
         ]
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        animation: calm ? false : { duration: 220, easing: 'easeOutQuart' },
+        animation: calm ? false : {
+          duration: 400,
+          easing: 'easeOutCubic',
+          delay(ctx) {
+            if (ctx.type !== 'data') return 0;
+            if (ctx.datasetIndex === 0) return 420;
+            if (ctx.datasetIndex === 2) return 520;
+            return (ctx.dataIndex ?? 0) * 5;
+          }
+        },
         plugins: {
           legend: {
-            labels: { color: muted, boxWidth: 12, font: { family: 'Inter', size: 12 } }
+            labels: {
+              color: muted,
+              boxWidth: 12,
+              font: { family: 'Inter', size: 12 },
+              filter: (item) => item.text !== ''
+            }
           }
         },
         scales: {
