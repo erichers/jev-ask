@@ -1,0 +1,92 @@
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/newsreader/400.css";
+@import "@fontsource/newsreader/500.css";
+@import "@fontsource/newsreader/600.css";
+@import "@fontsource/newsreader/400-italic.css";
+@import "@fontsource/jetbrains-mono/500.css";
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --paper: #f6f1e8;
+  --paper-2: #fffdf8;
+  --ink: #1c1612;
+  --muted: #6e6258;
+  --line: rgba(28, 22, 18, 0.12);
+  --signal: #0e8f78;
+  --signal-soft: rgba(14, 143, 120, 0.16);
+  --terra: #d97757;
+  --terra-deep: #c25a3c;
+  --down: #9d3b3b;
+  --up: #0e8f78;
+  --shadow: 0 30px 70px rgba(72, 42, 22, 0.1);
+  --header: rgba(246, 241, 232, 0.86);
+  --serif: "Newsreader", "Iowan Old Style", Palatino, Georgia, serif;
+  --sans: "Inter", "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0b1220;
+  --paper-2: #131b2e;
+  --ink: #f6f1ea;
+  --muted: #b4b8c6;
+  --line: rgba(246, 241, 234, 0.12);
+  --signal: #2dd4bf;
+  --signal-soft: rgba(45, 212, 191, 0.16);
+  --terra: #e08a6c;
+  --terra-deep: #d97757;
+  --down: #f0a3a3;
+  --up: #2dd4bf;
+  --shadow: 0 30px 80px rgba(0, 0, 0, 0.38);
+  --header: rgba(11, 18, 32, 0.82);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button, input, select, textarea { font: inherit; color: inherit; }
+
+button, a { -webkit-tap-highlight-color: transparent; }
+
+:focus-visible {
+  outline: 2px solid var(--terra);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--signal-soft);
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--muted) 45%, transparent);
+  border-radius: 99px;
+  border: 2px solid var(--paper);
+}
+::-webkit-scrollbar-track { background: transparent; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
