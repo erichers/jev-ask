@@ -29,7 +29,7 @@ public static class PdfBrief
                     column.Item().Text($"{response.Probability * 100:0.0}%")
                         .FontSize(36)
                         .SemiBold()
-                        .FontColor("#0f9f82");
+                        .FontColor("#4F7A00");
                     column.Item().Text(
                         $"Range {response.BandLow * 100:0.0}% to {response.BandHigh * 100:0.0}%. " +
                         $"Spot {response.Spot:0.00} on {response.SpotDate:yyyy-MM-dd}. " +

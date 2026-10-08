@@ -1,22 +1,23 @@
 .home {
-  width: min(820px, calc(100% - 32px));
-  margin: 8vh auto 48px;
-  animation: rise 560ms cubic-bezier(0.16, 1, 0.3, 1);
+  width: min(1080px, calc(100% - 40px));
+  margin: 56px auto 64px;
+  animation: rise 200ms ease;
 }
 
 .kicker {
-  margin: 0 0 12px;
-  color: var(--terra-deep);
+  margin: 0 0 14px;
+  color: var(--muted);
   font-size: 0.78rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 h1 {
   margin: 0;
+  max-width: 14ch;
   font-family: var(--serif);
   font-weight: 500;
-  font-size: clamp(2.7rem, 7vw, 4.8rem);
+  font-size: clamp(2.8rem, 6vw, 4.6rem);
   letter-spacing: -0.035em;
   line-height: 0.98;
 }
@@ -24,12 +25,11 @@ h1 {
 h1 em {
   font-style: italic;
   font-weight: 450;
-  color: var(--terra);
 }
 
 .lede {
-  margin: 16px 0 28px;
-  max-width: 36rem;
+  margin: 18px 0 32px;
+  max-width: 28rem;
   color: var(--muted);
   font-size: 1.05rem;
 }
@@ -37,9 +37,8 @@ h1 em {
 .ask {
   background: var(--paper-2);
   border: 1px solid var(--line);
-  border-radius: 28px;
-  box-shadow: var(--shadow);
-  padding: 18px 18px 14px;
+  border-radius: 8px;
+  padding: 16px 16px 12px;
 }
 
 textarea {
@@ -48,13 +47,13 @@ textarea {
   border: 0;
   background: transparent;
   font-family: var(--serif);
-  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
   line-height: 1.35;
-  min-height: 4.4rem;
-  padding: 6px 6px 0;
+  min-height: 4.2rem;
+  padding: 4px 4px 0;
 }
 
-textarea::placeholder { color: color-mix(in srgb, var(--muted) 75%, transparent); }
+textarea::placeholder { color: color-mix(in srgb, var(--muted) 80%, transparent); }
 
 .ask-bar {
   display: flex;
@@ -72,92 +71,90 @@ textarea::placeholder { color: color-mix(in srgb, var(--muted) 75%, transparent)
 
 .ask-bar button {
   border: 0;
-  background: var(--terra-deep);
-  color: #fffdf8;
-  border-radius: 999px;
-  padding: 10px 22px;
+  background: var(--fill);
+  color: var(--on-fill);
+  border-radius: 6px;
+  padding: 10px 18px;
   cursor: pointer;
   font-weight: 600;
-  letter-spacing: 0.01em;
 }
 
-[data-theme="dark"] .ask-bar button { color: #1c1612; }
-
-.ask-bar button:hover { filter: brightness(1.06); }
-.ask-bar button:disabled { opacity: 0.65; cursor: progress; }
+.ask-bar button:hover { filter: brightness(1.05); }
+.ask-bar button:disabled { opacity: 0.6; cursor: progress; }
 
 .error {
   color: var(--down);
-  margin: 14px 4px 0;
+  margin: 14px 0 0;
 }
 
-.suggest { margin-top: 28px; }
+.suggest { margin-top: 36px; }
 .suggest p, .tape h2, .recent h2 {
-  margin: 0 0 10px;
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
+  margin: 0 0 8px;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
   font-weight: 600;
 }
 
 .chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid var(--line);
 }
 
 .chips button {
-  border: 1px solid var(--line);
+  border: 0;
+  border-bottom: 1px solid var(--line);
   background: transparent;
-  border-radius: 999px;
-  padding: 8px 12px;
+  border-radius: 0;
+  padding: 12px 4px;
   cursor: pointer;
   text-align: left;
-  font-size: 0.92rem;
-  animation: chip-in 480ms both;
+  font-size: 0.98rem;
+  animation: rise 200ms ease both;
 }
 
-.chips button:hover {
-  border-color: var(--terra);
-  background: color-mix(in srgb, var(--terra) 10%, transparent);
-}
+.chips button:hover { color: var(--signal); }
 
-.tape, .recent { margin-top: 36px; }
+.tape, .recent { margin-top: 40px; }
 
 .tape-row {
   display: flex;
-  gap: 10px;
+  gap: 0;
   overflow-x: auto;
-  padding-bottom: 4px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  scrollbar-width: none;
 }
 
 .pill {
-  min-width: 132px;
-  background: var(--paper-2);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 10px 12px;
+  min-width: 128px;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid var(--line);
+  border-radius: 0;
+  padding: 12px 16px 12px 0;
+  margin-left: 16px;
   display: grid;
   gap: 2px;
 }
 
-.pill strong { font-size: 0.82rem; letter-spacing: 0.06em; }
+.pill:first-child { margin-left: 0; }
+.pill strong { font-size: 0.78rem; letter-spacing: 0.06em; }
 .px { font-family: var(--mono); font-size: 0.95rem; }
 .up { color: var(--up); font-variant-numeric: tabular-nums; }
 .down { color: var(--down); font-variant-numeric: tabular-nums; }
 .quiet { color: var(--muted); margin: 0; }
 
 .sk {
-  height: 74px;
-  min-width: 132px;
-  border-radius: 16px;
-  background: linear-gradient(90deg, var(--line), var(--paper-2), var(--line));
-  background-size: 200% 100%;
-  animation: shimmer 1.2s linear infinite;
+  height: 64px;
+  min-width: 128px;
+  border-radius: 0;
+  background: var(--line);
 }
 
-.recent ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.recent ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
 .recent button {
   width: 100%;
   display: flex;
@@ -165,13 +162,14 @@ textarea::placeholder { color: color-mix(in srgb, var(--muted) 75%, transparent)
   gap: 16px;
   text-align: left;
   color: inherit;
-  background: var(--paper-2);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 12px 14px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 12px 2px;
   cursor: pointer;
 }
-.recent button:hover { border-color: var(--terra); }
+.recent button:hover { color: var(--signal); }
 .recent em {
   font-style: normal;
   font-family: var(--mono);
@@ -187,22 +185,18 @@ textarea::placeholder { color: color-mix(in srgb, var(--muted) 75%, transparent)
 }
 
 @keyframes rise {
-  from { opacity: 0; transform: translateY(16px); }
+  from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: none; }
 }
 
-@keyframes chip-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: none; }
-}
-
-@keyframes shimmer {
-  from { background-position: 100% 0; }
-  to { background-position: -100% 0; }
+@media (min-width: 800px) {
+  .chips { grid-template-columns: 1fr 1fr; }
+  .chips button:nth-child(odd) { padding-right: 24px; }
+  .chips button:nth-child(even) { padding-left: 24px; border-left: 1px solid var(--line); }
 }
 
 @media (max-width: 640px) {
-  .home { margin-top: 28px; }
+  .home { margin-top: 28px; width: calc(100% - 32px); }
   .ask-bar { align-items: flex-start; flex-direction: column; }
   .ask-bar button { align-self: flex-end; }
 }

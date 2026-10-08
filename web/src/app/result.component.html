@@ -6,33 +6,33 @@
 
   @if (chipsOn()) {
     <div class="chips">
-      <label style="animation-delay: 40ms">
+      <label>
         <span>Ticker</span>
         <input [value]="ticker()" (input)="ticker.set(asText($event)); onField()" maxlength="8" autocomplete="off" />
       </label>
-      <label style="animation-delay: 90ms">
+      <label>
         <span>Condition</span>
         <select [value]="condition()" (change)="condition.set(asSelect($event)); onField()">
           <option value="above">above</option>
           <option value="below">below</option>
         </select>
       </label>
-      <label style="animation-delay: 140ms">
+      <label>
         <span>Test</span>
         <select [value]="style()" (change)="style.set(asStyle($event)); onField()">
           <option value="close">close</option>
           <option value="touch">touch</option>
         </select>
       </label>
-      <label style="animation-delay: 190ms">
+      <label>
         <span>Level</span>
         <input type="number" min="0" step="0.01" [value]="level()" (input)="level.set(asNumber($event)); onField()" />
       </label>
-      <div class="mode" role="group" aria-label="Level type" style="animation-delay: 240ms">
+      <div class="mode" role="group" aria-label="Level type">
         <button type="button" [class.on]="levelMode() === 'absolute'" (click)="setMode('absolute')">$</button>
         <button type="button" [class.on]="levelMode() === 'percent'" (click)="setMode('percent')">%</button>
       </div>
-      <label style="animation-delay: 290ms">
+      <label>
         <span>Date</span>
         <input type="date" [value]="expiry()" (input)="expiry.set(asText($event)); onField()" />
       </label>

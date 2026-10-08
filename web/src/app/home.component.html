@@ -1,7 +1,7 @@
 <section class="home">
   <p class="kicker">A likelihood, with the steps</p>
   <h1>Ask a market <em>question.</em></h1>
-  <p class="lede">One sentence in. A probability, a range, and the working behind it.</p>
+  <p class="lede">A probability, a range, and the steps.</p>
 
   <form class="ask" (submit)="submit($event)">
     <label class="sr" for="ask">Market question</label>
@@ -27,8 +27,8 @@
   <div class="suggest">
     <p>Try one</p>
     <div class="chips">
-      @for (item of examples(); track item; let i = $index) {
-        <button type="button" [style.animation-delay.ms]="40 + i * 45" (click)="use(item)">{{ item }}</button>
+      @for (item of examples(); track item) {
+        <button type="button" (click)="use(item)">{{ item }}</button>
       }
     </div>
   </div>

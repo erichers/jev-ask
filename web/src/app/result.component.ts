@@ -143,34 +143,19 @@ export class ResultComponent {
 
     queueMicrotask(() => this.chipsOn.set(true));
     window.setTimeout(() => this.railOn.set(true), 40);
+    this.reasonText.set(row.reasoning);
+    this.visibleSteps.set(row.steps.length);
 
     const start = performance.now();
     const target = row.probability;
     const tick = (now: number) => {
-      const t = Math.min(1, (now - start) / 900);
+      const t = Math.min(1, (now - start) / 250);
       const eased = 1 - Math.pow(1 - t, 3);
       this.shown.set(target * eased);
       if (t < 1) this.frame = window.requestAnimationFrame(tick);
     };
     this.shown.set(0);
     this.frame = window.requestAnimationFrame(tick);
-
-    const words = row.reasoning.split(' ');
-    let word = 0;
-    this.reasonText.set('');
-    this.wordTimer = window.setInterval(() => {
-      word += 2;
-      this.reasonText.set(words.slice(0, word).join(' '));
-      if (word >= words.length) window.clearInterval(this.wordTimer);
-    }, 28);
-
-    let step = 0;
-    this.visibleSteps.set(0);
-    this.stepTimer = window.setInterval(() => {
-      step += 1;
-      this.visibleSteps.set(step);
-      if (step >= row.steps.length) window.clearInterval(this.stepTimer);
-    }, 180);
   }
 
   private emitEdit(): void {
@@ -188,7 +173,7 @@ export class ResultComponent {
 
   private draw(canvas: HTMLCanvasElement, row: AskResponse): void {
     const styles = getComputedStyle(document.documentElement);
-    const signal = styles.getPropertyValue('--signal').trim() || '#19c39c';
+    const signal = styles.getPropertyValue('--signal').trim() || '#4f7a00';
     const down = styles.getPropertyValue('--down').trim() || '#a33b3b';
     const muted = styles.getPropertyValue('--muted').trim() || '#5c6b7e';
     const line = styles.getPropertyValue('--line').trim() || 'rgba(11,18,32,0.08)';
@@ -221,7 +206,7 @@ export class ResultComponent {
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        animation: calm ? false : { duration: 1100, easing: 'easeOutQuart' },
+        animation: calm ? false : { duration: 220, easing: 'easeOutQuart' },
         plugins: {
           legend: {
             labels: { color: muted, boxWidth: 12, font: { family: 'Inter', size: 12 } }
