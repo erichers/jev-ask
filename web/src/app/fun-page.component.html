@@ -1,0 +1,90 @@
+<section class="fun enter">
+  <p class="kicker">Just for fun</p>
+  <h1>Ask something <em>silly.</em></h1>
+  <p class="lede">Pop culture, pets, snacks, and other questions the market tool will not touch.</p>
+
+  <div class="tools">
+    <button type="button" class="shuffle press" (click)="shuffle()" [disabled]="busy()">
+      {{ busy() ? 'Dealing' : 'Shuffle' }}
+    </button>
+    <nav class="cats" aria-label="Categories">
+      <button type="button" [class.on]="category() === 'All'" (click)="setCategory('All')">All</button>
+      @for (name of categories(); track name) {
+        <button type="button" [class.on]="category() === name" (click)="setCategory(name)">{{ name }}</button>
+      }
+    </nav>
+  </div>
+
+  <form class="ask" (submit)="submit($event)">
+    <label class="sr" for="fun-ask">Fun question</label>
+    <textarea
+      id="fun-ask"
+      rows="2"
+      maxlength="500"
+      placeholder="Will a cat sit in a box that is slightly too small?"
+      [value]="question()"
+      (input)="question.set(text($event))"
+    ></textarea>
+    <div class="ask-bar">
+      <p>For fun. Not a prediction.</p>
+      <button type="submit" class="press" [disabled]="busy()">Ask</button>
+    </div>
+  </form>
+
+  @if (error()) {
+    <p class="error" role="alert">{{ error() }}</p>
+  }
+
+  <app-flow [steps]="funSteps" [value]="answer()?.likelihood ?? 0" [note]="flowNote" />
+
+  <div class="stage">
+    @if (answer(); as card) {
+      <article class="card" [class.flip]="flipping()">
+        <p class="meta">{{ card.category }} · {{ card.tag }}</p>
+        <h2>{{ card.question }}</h2>
+        <p class="number">{{ pct(shown()) }}</p>
+        <div class="meter" #meter aria-hidden="true"><div [style.width.%]="fill()"></div></div>
+        <p class="reason">{{ card.reasoning }}</p>
+        <p class="note">For fun. Not a prediction.</p>
+        <div class="actions">
+          <button type="button" class="press" (click)="copyLink()">{{ copied() ? 'Copied' : 'Copy link' }}</button>
+          <button type="button" class="press" (click)="download()">Download PNG</button>
+        </div>
+      </article>
+    } @else {
+      <p class="quiet">Shuffle a card, or type a ridiculous question.</p>
+    }
+  </div>
+
+  @if (filtered().length) {
+    <section class="list">
+      <h2>{{ category() }}</h2>
+      <ul>
+        @for (row of filtered(); track row.question) {
+          <li>
+            <button type="button" (click)="pick(row)">
+              <span>{{ row.question }}</span>
+              <em>{{ row.likelihood }}%</em>
+            </button>
+          </li>
+        }
+      </ul>
+    </section>
+  }
+
+  @if (recent().length) {
+    <section class="list recent">
+      <h2>Recent fun questions</h2>
+      <ul>
+        @for (row of recent(); track row.id) {
+          <li>
+            <button type="button" (click)="openRecent(row)">
+              <span>{{ row.question }}</span>
+              <em>{{ row.percent }}%</em>
+            </button>
+          </li>
+        }
+      </ul>
+    </section>
+  }
+</section>

@@ -1,0 +1,24 @@
+<div class="shell">
+  <header class="top">
+    <a class="brand" routerLink="/" aria-label="Jev Ask home">
+      <img src="favicon.svg" alt="" width="28" height="28" />
+      <span>Jev Ask</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a routerLink="/" routerLinkActive="on" [routerLinkActiveOptions]="{ exact: true }">Markets</a>
+      <a routerLink="/fun" routerLinkActive="on">Just for fun</a>
+    </nav>
+    <button type="button" class="theme press" (click)="theme.toggle()" [attr.aria-label]="theme.mode() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
+      {{ theme.mode() === 'dark' ? 'Light' : 'Dark' }}
+    </button>
+  </header>
+
+  <main class="page">
+    <router-outlet />
+  </main>
+
+  <footer class="foot">
+    <p>Educational tool. Not financial advice.</p>
+    <p>by Ulric studio</p>
+  </footer>
+</div>

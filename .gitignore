@@ -1,0 +1,11 @@
+bin/
+obj/
+.vs/
+.idea/
+*.user
+*.db
+.env
+web/node_modules/
+web/dist/
+web/.angular/
+src/JevAsk.Api/data/

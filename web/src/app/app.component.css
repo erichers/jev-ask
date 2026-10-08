@@ -1,0 +1,81 @@
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--header);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  letter-spacing: -0.03em;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-left: 22px;
+  margin-right: auto;
+}
+
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+
+.nav a.on { color: var(--ink); }
+
+.theme {
+  border: 1px solid var(--line);
+  background: transparent;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.theme:hover { border-color: var(--signal); }
+
+.page {
+  flex: 1;
+}
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 20px 28px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.foot p { margin: 0; }
+
+.top, .foot {
+  transition: background-color 320ms var(--ease), color 320ms var(--ease), border-color 320ms var(--ease);
+}
+
+@media (min-width: 900px) {
+  .top, .foot { padding-left: 40px; padding-right: 40px; }
+}

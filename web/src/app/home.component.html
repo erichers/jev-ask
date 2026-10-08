@@ -1,0 +1,79 @@
+<section class="home enter">
+  <p class="kicker">A likelihood, with the steps</p>
+  <h1>Ask a market <em>question.</em></h1>
+  <p class="lede">A probability, a range, and the steps.</p>
+
+  <form class="ask" (submit)="submit($event)">
+    <label class="sr" for="ask">Market question</label>
+    <textarea
+      id="ask"
+      #box
+      rows="2"
+      maxlength="500"
+      placeholder="Will NVDA close above 250 by the end of the month?"
+      [value]="question()"
+      (input)="question.set(text($event))"
+    ></textarea>
+    <div class="ask-bar">
+      <p>Educational tool. Not financial advice.</p>
+      <button type="submit" class="press" [disabled]="loading()">{{ loading() ? 'Working' : 'Ask' }}</button>
+    </div>
+  </form>
+
+  @if (error()) {
+    <p class="error" role="alert">{{ error() }}</p>
+  }
+
+  <div class="suggest">
+    <p>Try one</p>
+    <div class="chips">
+      @for (item of examples(); track item) {
+        <button type="button" (click)="use(item)">{{ item }}</button>
+      }
+    </div>
+  </div>
+
+  <section class="tape" aria-label="Recent closes">
+    <h2>Recent closes</h2>
+    @if (!tapeReady()) {
+      <div class="tape-row">
+        @for (n of [1, 2, 3, 4]; track n) {
+          <div class="sk pill"></div>
+        }
+      </div>
+    } @else if (tape().length === 0) {
+      <p class="quiet">Prices appear when the market feed or the bundled cache is available.</p>
+    } @else {
+      <div class="tape-row">
+        @for (row of tape(); track row.ticker) {
+          <article class="pill">
+            <strong>{{ row.ticker }}</strong>
+            <span class="px">{{ px(row.close) }}</span>
+            <span [class.up]="row.change >= 0" [class.down]="row.change < 0">{{ pct(row.change) }}</span>
+          </article>
+        }
+      </div>
+    }
+  </section>
+
+  <section class="fun-door">
+    <p>Just for fun</p>
+    <a routerLink="/fun">Silly questions and playful odds, kept apart from the market tool.</a>
+  </section>
+
+  @if (recent().length) {
+    <section class="recent">
+      <h2>Recent questions</h2>
+      <ul>
+        @for (item of recent(); track item.question) {
+          <li>
+            <button type="button" (click)="open(item)">
+              <span>{{ item.question }}</span>
+              <em>{{ chance(item.probability) }}</em>
+            </button>
+          </li>
+        }
+      </ul>
+    </section>
+  }
+</section>

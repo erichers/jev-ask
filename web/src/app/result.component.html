@@ -1,0 +1,88 @@
+<article class="result enter" [class.updating]="updating()" aria-live="polite">
+  <div class="badges">
+    <span class="badge">{{ parserText() }}</span>
+    <span class="badge" [class.live]="result().dataFreshness === 'live'">{{ dataText() }}</span>
+  </div>
+
+  @if (chipsOn()) {
+    <div class="chips">
+      <label>
+        <span>Ticker</span>
+        <input [value]="ticker()" (input)="ticker.set(asText($event)); onField()" maxlength="8" autocomplete="off" />
+      </label>
+      <label>
+        <span>Condition</span>
+        <select [value]="condition()" (change)="condition.set(asSelect($event)); onField()">
+          <option value="above">above</option>
+          <option value="below">below</option>
+        </select>
+      </label>
+      <label>
+        <span>Test</span>
+        <select [value]="style()" (change)="style.set(asStyle($event)); onField()">
+          <option value="close">close</option>
+          <option value="touch">touch</option>
+        </select>
+      </label>
+      <label>
+        <span>Level</span>
+        <input type="number" min="0" step="0.01" [value]="level()" (input)="level.set(asNumber($event)); onField()" />
+      </label>
+      <div class="mode" role="group" aria-label="Level type">
+        <button type="button" class="press" [class.on]="levelMode() === 'absolute'" (click)="setMode('absolute')">$</button>
+        <button type="button" class="press" [class.on]="levelMode() === 'percent'" (click)="setMode('percent')">%</button>
+      </div>
+      <label>
+        <span>Date</span>
+        <input type="date" [value]="expiry()" (input)="expiry.set(asText($event)); onField()" />
+      </label>
+    </div>
+  }
+  @if (result().intent.expiryAssumed) {
+    <p class="assume">No date was in the question. Using 30 days from today.</p>
+  }
+
+  <div class="readout">
+    <p class="eyebrow">Likelihood</p>
+    <p class="number">{{ pct(shown()) }}</p>
+    <p class="range">Range {{ pct(result().bandLow) }} to {{ pct(result().bandHigh) }}</p>
+    <div class="rail" #rail aria-hidden="true">
+      <div class="rail-band" [style.left.%]="railOn() ? bandLeft() : 0" [style.width.%]="railOn() ? bandWidth() : 0"></div>
+      <div class="rail-mark" [style.left.%]="railOn() ? markLeft() : 0"></div>
+    </div>
+    <div class="rail-scale"><span>0%</span><span>50%</span><span>100%</span></div>
+    <p class="side" [class.up]="condition() === 'above'" [class.down]="condition() === 'below'">
+      {{ style() }} {{ condition() }} {{ levelMode() === 'percent' ? level() + '%' : px(result().targetPrice) }}
+      · spot {{ px(result().spot) }}
+    </p>
+  </div>
+
+  <p class="note">{{ result().disclaimer }}</p>
+  <p class="reasoning">{{ reasonText() }}</p>
+
+  <div class="split">
+    <section class="steps">
+      <h2>Steps</h2>
+      <ol>
+        @for (step of steps(); track step.n) {
+          <li class="step-in">
+            <strong>{{ step.n }}. {{ step.title }}</strong>
+            <span>{{ step.detail }}</span>
+          </li>
+        }
+      </ol>
+    </section>
+    <section class="chart-wrap">
+      <h2>Recent closes</h2>
+      <div class="chart-box">
+        <canvas #chart></canvas>
+      </div>
+    </section>
+  </div>
+
+  <section class="span">
+    <h2>How the number is made</h2>
+    <app-flow [steps]="marketSteps" [value]="result().probability" [note]="flowNote" />
+  </section>
+  <app-path-field class="span" [theme]="theme()" />
+</article>

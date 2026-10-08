@@ -1,0 +1,202 @@
+.result {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 22px 20px 26px;
+}
+
+.result.updating { opacity: 0.72; }
+
+.badges { display: flex; flex-wrap: wrap; gap: 14px; }
+
+.badge {
+  padding: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.badge.live { color: var(--signal); }
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.chips label, .mode {
+  display: grid;
+  gap: 4px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.chips span {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.chips input, .chips select {
+  border: 0;
+  background: transparent;
+  font-family: var(--mono);
+  font-size: 0.92rem;
+  min-width: 0;
+  width: 100%;
+}
+
+.mode {
+  align-content: end;
+  grid-auto-flow: column;
+  gap: 6px;
+}
+
+.mode button {
+  border: 1px solid var(--line);
+  background: transparent;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.mode button.on {
+  background: var(--fill);
+  color: var(--on-fill);
+  border-color: transparent;
+}
+
+.assume { color: var(--muted); font-size: 0.88rem; margin: 10px 0 0; }
+
+.readout { margin-top: 28px; }
+
+.eyebrow {
+  margin: 0;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.number {
+  margin: 6px 0 0;
+  font-family: var(--mono);
+  font-size: clamp(4rem, 12vw, 6.2rem);
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  color: var(--signal);
+  font-variant-numeric: tabular-nums;
+}
+
+.range { margin: 10px 0 14px; color: var(--muted); }
+
+.rail {
+  position: relative;
+  height: 2px;
+  background: var(--line);
+}
+
+.rail-band, .rail-mark {
+  position: absolute;
+  top: -3px;
+  height: 8px;
+  transition: left 360ms var(--ease), width 360ms var(--ease);
+}
+
+.rail-band { background: var(--signal-soft); }
+.rail-mark {
+  width: 2px;
+  top: -4px;
+  height: 10px;
+  background: var(--signal);
+}
+
+.rail-scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+
+.side { margin: 14px 0 0; font-family: var(--mono); font-size: 0.92rem; }
+.side.up { color: var(--up); }
+.side.down { color: var(--down); }
+
+.note {
+  margin: 20px 0 8px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.reasoning {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  line-height: 1.45;
+}
+
+.split {
+  display: grid;
+  gap: 22px;
+  margin-top: 28px;
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+
+li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+li strong { font-weight: 600; }
+li span { color: var(--muted); grid-column: 2; }
+
+.step-in { animation: rise-in 320ms var(--ease) both; }
+.step-in:nth-child(2) { animation-delay: 50ms; }
+.step-in:nth-child(3) { animation-delay: 100ms; }
+.step-in:nth-child(4) { animation-delay: 150ms; }
+.step-in:nth-child(5) { animation-delay: 200ms; }
+
+.span { grid-column: 1 / -1; margin-top: 28px; }
+
+.chart-box { height: 240px; }
+
+@media (min-width: 860px) {
+  .result {
+    padding: 28px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    column-gap: 36px;
+    align-items: start;
+  }
+  .badges, .chips, .assume, .readout, .note, .reasoning, .steps { grid-column: 1; }
+  .span { grid-column: 1 / -1; }
+  .split { display: contents; }
+  .chart-wrap {
+    grid-column: 2;
+    grid-row: 1 / span 6;
+    margin-top: 4px;
+    padding-left: 28px;
+    border-left: 1px solid var(--line);
+  }
+  .chart-box { height: 320px; }
+}
