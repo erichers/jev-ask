@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.Json;
 using JevAsk.Api.Brief;
 using JevAsk.Api.Data;
+using JevAsk.Api.Fun;
 using JevAsk.Api.Market;
 using JevAsk.Api.Parsing;
 using JevAsk.Core.Ask;
@@ -186,7 +187,9 @@ public class AskAndLlmTests
     [Fact]
     public void Mysql_schema_stays_compatible_with_5_7()
     {
-        var sql = MySqlSchema.CreateQuestions + MySqlSchema.CreateSeries + MySqlSchema.CreateQuestionsIndex;
+        var sql = MySqlSchema.CreateQuestions + MySqlSchema.CreateSeries + MySqlSchema.CreateQuestionsIndex
+            + MySqlSchema.CreateFunCards + MySqlSchema.CreateFunAsks
+            + MySqlSchema.CreateFunCardsIndex + MySqlSchema.CreateFunAsksIndex;
         Assert.Contains("utf8mb4_unicode_ci", sql, StringComparison.Ordinal);
         Assert.Contains("longtext", sql, StringComparison.Ordinal);
         Assert.Contains("datetime(6)", sql, StringComparison.Ordinal);
@@ -212,6 +215,18 @@ public class AskAndLlmTests
         await db.SaveChangesAsync();
         Assert.Equal(1, await db.Questions.CountAsync());
         Assert.True(await db.Series.CountAsync() == 0);
+        db.FunAsks.Add(new FunAskRow
+        {
+            Question = "Will a cat sit in a box?",
+            Likelihood = 0.91,
+            Reasoning = "Boxes win.",
+            Category = "Pets",
+            Tag = "Base rate",
+            Source = "bank",
+            CreatedAtUtc = DateTime.UtcNow
+        });
+        await db.SaveChangesAsync();
+        Assert.Equal(1, await db.FunAsks.CountAsync());
         File.Delete(path);
     }
 

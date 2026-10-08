@@ -14,6 +14,36 @@ The screen shows the parsed intent as chips you can edit. Changing a chip recomp
 
 Every answer says which parser ran, and whether the prices were live or cached. Recent questions stay in the browser and in the database. Light and dark mode follow the system until you choose, then the choice stays in localStorage.
 
+The header also opens Just for fun, a separate page for silly questions. It is not the market tool.
+
+## Just for fun
+
+`/fun` is a playground for pop culture, memes, movies, music, sports banter, food, everyday life, space, and pets. It is linked from the header and from the home page, and it stays off the market parser.
+
+Shuffle deals a card from a curated bank of 162 questions. Each card has a likelihood, a short base-rate style reason, a category, and a tag such as Base rate, Vibes, or Physics says no. The free-text box tries a fuzzy match against that bank first. If nothing is close, a local vibe engine hashes the wording so the same question always returns the same likelihood. The words ever, tomorrow, and cat nudge that number. Every fun answer includes the line "For fun. Not a prediction."
+
+The bank lives in `data/fun/questions.json` and is seeded into SQLite or MySQL on startup. Fun asks are stored in their own history, separate from market questions. Copy link shares `/fun/{id}`. Download PNG saves the card.
+
+If the `OLLAMA_URL` environment variable is set, a local Ollama model may rewrite the vibe engine's reason text. The likelihood stays the hashed number. If Ollama is unset, slow, or unusable, the templated reason is kept. The app does not call Ollama for fun questions unless that variable is set.
+
+| Shuffle, light desktop | Shuffle, dark desktop |
+| --- | --- |
+| ![Fun shuffle light desktop](docs/screenshots/fun-shuffle-light-desktop.png) | ![Fun shuffle dark desktop](docs/screenshots/fun-shuffle-dark-desktop.png) |
+| Shuffle, light phone | Shuffle, dark phone |
+| ![Fun shuffle light phone](docs/screenshots/fun-shuffle-light-phone.png) | ![Fun shuffle dark phone](docs/screenshots/fun-shuffle-dark-phone.png) |
+
+| Free text, light desktop | Free text, dark desktop |
+| --- | --- |
+| ![Fun text light desktop](docs/screenshots/fun-text-light-desktop.png) | ![Fun text dark desktop](docs/screenshots/fun-text-dark-desktop.png) |
+| Free text, light phone | Free text, dark phone |
+| ![Fun text light phone](docs/screenshots/fun-text-light-phone.png) | ![Fun text dark phone](docs/screenshots/fun-text-dark-phone.png) |
+
+| Category, light desktop | Category, dark desktop |
+| --- | --- |
+| ![Fun category light desktop](docs/screenshots/fun-category-light-desktop.png) | ![Fun category dark desktop](docs/screenshots/fun-category-dark-desktop.png) |
+| Category, light phone | Category, dark phone |
+| ![Fun category light phone](docs/screenshots/fun-category-light-phone.png) | ![Fun category dark phone](docs/screenshots/fun-category-dark-phone.png) |
+
 A PDF brief can be downloaded. QuestPDF is used under its Community license.
 
 Educational tool. Not financial advice.
@@ -170,6 +200,11 @@ Copy `.env.example` for the full list. Do not commit a filled `.env`. Empty plac
 | POST | `/api/ask` | `{ "question": "...", "asOf": "2026-10-08" }` | answer, stored in history |
 | POST | `/api/recompute` | ticker, condition, style, levelMode, level, expiry, optional asOf | answer after a chip edit |
 | POST | `/api/brief.pdf` | the answer JSON | `application/pdf` |
+| GET | `/api/fun/bank` | optional `category` | curated fun questions |
+| GET | `/api/fun/history` |  | latest fun asks |
+| GET | `/api/fun/asks/{id}` |  | one saved fun answer |
+| POST | `/api/fun/ask` | `{ "question": "..." }` | bank match or vibe answer, stored |
+| POST | `/api/fun/shuffle` |  | a random bank card, stored |
 
 History rows and saved answers include `url` when `PUBLIC_BASE_URL` is set. The UI calls these routes as `api/...` under its base href.
 
@@ -221,7 +256,7 @@ dotnet run --project src/JevAsk.Api
 
 Leave `MYSQL_SERVER_VERSION` unset. Pomelo then calls `ServerVersion.AutoDetect` against that connection. Set `MYSQL_SERVER_VERSION=5.7.39-mysql` only when you want to pin the version without a detection query. The schema uses `utf8mb4` / `utf8mb4_unicode_ci`, `longtext`, and `datetime(6)`. It does not use MySQL 8 collations.
 
-On startup the API applies EF Core migrations and, if the series table is empty, seeds the bundled daily bars. Question history and cached bars both live in MySQL. A later live fetch replaces a seeded row. Rows that are still the bundled file are labeled `bundled sample`. Other saved rows are labeled `saved cache`.
+On startup the API applies EF Core migrations and, if the series table is empty, seeds the bundled daily bars. Missing fun-bank rows are seeded from `data/fun/questions.json` on every startup. Question history, fun asks, and cached bars all live in MySQL. A later live fetch replaces a seeded row. Rows that are still the bundled file are labeled `bundled sample`. Other saved rows are labeled `saved cache`.
 
 When `PUBLIC_BASE_URL` is set, saved answers and history rows include a `url` such as `http://localhost:8888/grokbot/asp/jev-ask/q/4`. The PDF prints that link. An empty base leaves `url` null, which is the zero-config default.
 
@@ -261,7 +296,7 @@ The API waits until MySQL is healthy, then migrates and seeds.
 dotnet test
 ```
 
-The suite covers more than 25 parser questions, the normal CDF, close and touch formulas, the Monte Carlo cross-check, trading-day counts, the ask service, LLM fallback, the PDF header, all 15 bundled tickers, and a SQLite migration that stores a question.
+The suite covers more than 25 parser questions, the normal CDF, close and touch formulas, the Monte Carlo cross-check, trading-day counts, the ask service, LLM fallback, the PDF header, all 15 bundled tickers, a SQLite migration that stores a question, the fun vibe engine, and the fun question matcher.
 
 GitHub Actions builds the API, runs the tests, and builds the Angular app. See `.github/workflows/ci.yml`.
 
@@ -270,7 +305,7 @@ GitHub Actions builds the API, runs the tests, and builds the Angular app. See `
 | Variable | Purpose | Default |
 | --- | --- | --- |
 | `PARSER_PROVIDER` | `rule`, `ollama`, `openrouter`, `groq`, or `gemini` | `rule` |
-| `OLLAMA_URL` | Ollama base URL | `http://localhost:11434` |
+| `OLLAMA_URL` | Ollama base URL. The market parser uses localhost when its provider is ollama and this is empty. Just for fun calls Ollama only when this variable is set | empty for fun, localhost for the market parser |
 | `OLLAMA_MODEL` | Ollama model | `llama3.1` |
 | `OPENROUTER_API_KEY` | OpenRouter key | empty |
 | `OPENROUTER_MODEL` | OpenRouter model | `meta-llama/llama-3.1-8b-instruct:free` |

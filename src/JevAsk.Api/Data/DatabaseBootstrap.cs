@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Text.Json;
+using JevAsk.Api.Fun;
 using JevAsk.Api.Market;
 using JevAsk.Core.Probability;
 using Microsoft.EntityFrameworkCore;
@@ -8,9 +9,15 @@ namespace JevAsk.Api.Data;
 
 public static class DatabaseBootstrap
 {
-    public static async Task PrepareAsync(CacheDb db, string samplePath, CancellationToken cancellationToken)
+    public static async Task PrepareAsync(
+        CacheDb db,
+        string samplePath,
+        CancellationToken cancellationToken,
+        string? funBankPath = null)
     {
         await db.Database.MigrateAsync(cancellationToken);
+        if (!string.IsNullOrWhiteSpace(funBankPath))
+            await FunBankSeed.SeedAsync(db, funBankPath, cancellationToken);
         if (await db.Series.AnyAsync(cancellationToken))
             return;
         if (!Directory.Exists(samplePath))

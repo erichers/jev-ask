@@ -259,6 +259,8 @@ public sealed class CacheDb : DbContext
 
     public DbSet<CachedSeries> Series => Set<CachedSeries>();
     public DbSet<AskedQuestion> Questions => Set<AskedQuestion>();
+    public DbSet<JevAsk.Api.Fun.FunCard> FunCards => Set<JevAsk.Api.Fun.FunCard>();
+    public DbSet<JevAsk.Api.Fun.FunAskRow> FunAsks => Set<JevAsk.Api.Fun.FunAskRow>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -277,6 +279,28 @@ public sealed class CacheDb : DbContext
             entity.Property(row => row.Question).HasMaxLength(500);
             entity.Property(row => row.Ticker).HasMaxLength(16);
             entity.Property(row => row.PayloadJson).HasColumnType("longtext");
+            entity.HasIndex(row => row.CreatedAtUtc);
+        });
+
+        modelBuilder.Entity<JevAsk.Api.Fun.FunCard>(entity =>
+        {
+            entity.HasKey(row => row.Id);
+            entity.Property(row => row.Question).HasMaxLength(500);
+            entity.Property(row => row.Reasoning).HasColumnType("longtext");
+            entity.Property(row => row.Category).HasMaxLength(64);
+            entity.Property(row => row.Tag).HasMaxLength(32);
+            entity.HasIndex(row => row.Category);
+        });
+
+        modelBuilder.Entity<JevAsk.Api.Fun.FunAskRow>(entity =>
+        {
+            entity.ToTable("FunAsks");
+            entity.HasKey(row => row.Id);
+            entity.Property(row => row.Question).HasMaxLength(500);
+            entity.Property(row => row.Reasoning).HasColumnType("longtext");
+            entity.Property(row => row.Category).HasMaxLength(64);
+            entity.Property(row => row.Tag).HasMaxLength(32);
+            entity.Property(row => row.Source).HasMaxLength(16);
             entity.HasIndex(row => row.CreatedAtUtc);
         });
     }

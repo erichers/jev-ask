@@ -67,6 +67,28 @@ export interface HistoryItem {
   at: string;
 }
 
+export interface FunAnswer {
+  id: number;
+  question: string;
+  percent: number;
+  likelihood: number;
+  reasoning: string;
+  category: string;
+  tag: string;
+  source: string;
+  disclaimer: string;
+  url: string | null;
+  createdAtUtc: string;
+}
+
+export interface FunCard {
+  question: string;
+  likelihood: number;
+  reasoning: string;
+  category: string;
+  tag: string;
+}
+
 export interface HistorySummary {
   id: number;
   question: string;

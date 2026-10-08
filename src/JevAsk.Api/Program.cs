@@ -2,9 +2,11 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using JevAsk.Api.Brief;
 using JevAsk.Api.Data;
+using JevAsk.Api.Fun;
 using JevAsk.Api.Market;
 using JevAsk.Api.Parsing;
 using JevAsk.Core.Ask;
+using JevAsk.Core.Fun;
 using JevAsk.Core.Parsing;
 using JevAsk.Core.Probability;
 using Microsoft.EntityFrameworkCore;
@@ -61,6 +63,7 @@ builder.Services.AddSingleton<ProbabilityEngine>();
 builder.Services.AddSingleton<IQuestionParser, SelectingParser>();
 builder.Services.AddScoped<IMarketData, MarketDataService>();
 builder.Services.AddScoped<QuestionHistory>();
+builder.Services.AddScoped<FunService>();
 builder.Services.AddScoped(sp =>
 {
     var paths = sp.GetRequiredService<IConfiguration>().GetValue("MonteCarlo:Paths", 4000);
@@ -91,7 +94,8 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<CacheDb>();
     var samplePath = MarketDataService.ResolveSamplePath(app.Environment, app.Configuration);
-    await DatabaseBootstrap.PrepareAsync(db, samplePath, CancellationToken.None);
+    var funPath = FunBankSeed.ResolvePath(app.Environment, app.Configuration);
+    await DatabaseBootstrap.PrepareAsync(db, samplePath, CancellationToken.None, funPath);
 }
 
 app.UseCors();
@@ -180,6 +184,47 @@ app.MapPost("/api/recompute", async (RecomputeBody body, AskService ask, Questio
     }
 });
 
+app.MapGet("/api/fun/bank", async (string? category, FunService fun, CancellationToken ct) =>
+    Results.Ok(await fun.BankAsync(category, ct)));
+
+app.MapGet("/api/fun/history", async (FunService fun, CancellationToken ct) =>
+{
+    var rows = await fun.HistoryAsync(ct);
+    return Results.Ok(rows.Select(StampFun));
+});
+
+app.MapGet("/api/fun/asks/{id:long}", async (long id, FunService fun, CancellationToken ct) =>
+{
+    var row = await fun.FindAsync(id, ct);
+    return row is null
+        ? Results.NotFound(new { error = "That fun question is not in the history." })
+        : Results.Ok(StampFun(row));
+});
+
+app.MapPost("/api/fun/ask", async (FunBody body, FunService fun, CancellationToken ct) =>
+{
+    try
+    {
+        return Results.Ok(StampFun(await fun.AskAsync(body.Question, ct)));
+    }
+    catch (FunException ex)
+    {
+        return Results.BadRequest(new { error = ex.Message });
+    }
+});
+
+app.MapPost("/api/fun/shuffle", async (FunService fun, CancellationToken ct) =>
+{
+    try
+    {
+        return Results.Ok(StampFun(await fun.ShuffleAsync(ct)));
+    }
+    catch (FunException ex)
+    {
+        return Results.BadRequest(new { error = ex.Message });
+    }
+});
+
 app.MapPost("/api/brief.pdf", (AskResponse response) =>
 {
     if (string.IsNullOrWhiteSpace(response.Question) || response.Steps is null || response.Steps.Count == 0)
@@ -192,6 +237,9 @@ app.Run();
 
 AskResponse Stamp(AskResponse response) =>
     response with { Url = PublicLinks.Question(publicBaseUrl, response.Id) };
+
+FunAnswer StampFun(FunAnswer response) =>
+    response with { Url = PublicLinks.Fun(publicBaseUrl, response.Id) };
 
 static string First(params string?[] values) =>
     values.FirstOrDefault(value => !string.IsNullOrWhiteSpace(value))?.Trim() ?? "";
@@ -210,6 +258,8 @@ static string WithUtf8Mb4(string connectionString)
 }
 
 public sealed record AskBody(string? Question, DateOnly? AsOf);
+
+public sealed record FunBody(string? Question);
 
 public sealed record RecomputeBody(
     string? Ticker,

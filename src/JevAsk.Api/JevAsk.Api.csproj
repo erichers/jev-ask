@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <Content Include="..\..\data\samples\*.json" Link="data\samples\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="..\..\data\fun\questions.json" Link="data\fun\questions.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>

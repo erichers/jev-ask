@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AskResponse, HistorySummary, TapeRow } from './models';
+import { AskResponse, FunAnswer, FunCard, HistorySummary, TapeRow } from './models';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -32,6 +32,26 @@ export class ApiService {
     expiry: string;
   }): Promise<AskResponse> {
     return this.post<AskResponse>('api/recompute', body);
+  }
+
+  funBank(): Promise<FunCard[]> {
+    return this.get<FunCard[]>('api/fun/bank');
+  }
+
+  funHistory(): Promise<FunAnswer[]> {
+    return this.get<FunAnswer[]>('api/fun/history');
+  }
+
+  funById(id: string): Promise<FunAnswer> {
+    return this.get<FunAnswer>('api/fun/asks/' + id);
+  }
+
+  funAsk(question: string): Promise<FunAnswer> {
+    return this.post<FunAnswer>('api/fun/ask', { question });
+  }
+
+  funShuffle(): Promise<FunAnswer> {
+    return this.post<FunAnswer>('api/fun/shuffle', {});
   }
 
   async pdf(result: AskResponse): Promise<Blob> {

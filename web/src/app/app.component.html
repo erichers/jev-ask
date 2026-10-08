@@ -4,6 +4,10 @@
       <img src="favicon.svg" alt="" width="28" height="28" />
       <span>Jev Ask</span>
     </a>
+    <nav class="nav" aria-label="Sections">
+      <a routerLink="/" routerLinkActive="on" [routerLinkActiveOptions]="{ exact: true }">Markets</a>
+      <a routerLink="/fun" routerLinkActive="on">Just for fun</a>
+    </nav>
     <button type="button" class="theme" (click)="theme.toggle()" [attr.aria-label]="theme.mode() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
       {{ theme.mode() === 'dark' ? 'Light' : 'Dark' }}
     </button>

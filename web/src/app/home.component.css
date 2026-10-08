@@ -88,7 +88,7 @@ textarea::placeholder { color: color-mix(in srgb, var(--muted) 80%, transparent)
 }
 
 .suggest { margin-top: 36px; }
-.suggest p, .tape h2, .recent h2 {
+.suggest p, .tape h2, .recent h2, .fun-door p {
   margin: 0 0 8px;
   font-size: 0.75rem;
   letter-spacing: 0.12em;
@@ -117,7 +117,22 @@ textarea::placeholder { color: color-mix(in srgb, var(--muted) 80%, transparent)
 
 .chips button:hover { color: var(--signal); }
 
-.tape, .recent { margin-top: 40px; }
+.tape, .recent, .fun-door { margin-top: 40px; }
+
+.fun-door {
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.fun-door a {
+  color: inherit;
+  text-decoration: none;
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.fun-door a:hover { color: var(--signal); }
 
 .tape-row {
   display: flex;

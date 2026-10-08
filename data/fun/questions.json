@@ -1,0 +1,1136 @@
+[
+  {
+    "category": "Pop culture",
+    "tag": "Base rate",
+    "likelihood": 82,
+    "question": "Will the next big superhero film include a post-credits scene?",
+    "reasoning": "In a typical run of ten tentpole superhero films, about eight stick a short scene after the names. The habit is older than most of the audience. A quiet ending is the exception."
+  },
+  {
+    "category": "Pop culture",
+    "tag": "Vibes",
+    "likelihood": 48,
+    "question": "Will a classic sitcom reunion trend for a full day?",
+    "reasoning": "A familiar cast photo usually gets a warm afternoon, then the timeline moves on. Across ordinary weeks, about half of those reunions are still being shared the next morning. The rest fade before dinner."
+  },
+  {
+    "category": "Pop culture",
+    "tag": "Base rate",
+    "likelihood": 57,
+    "question": "Will a video game slip from its announced season into the next one?",
+    "reasoning": "A typical decade of announced games moves a little over half of the ambitious ones into the following season. Slippage is ordinary, not a scandal. The ones that land on time are the ones people remember as punctual."
+  },
+  {
+    "category": "Pop culture",
+    "tag": "Vibes",
+    "likelihood": 41,
+    "question": "Will a red-carpet host mispronounce a name on live TV?",
+    "reasoning": "Live carpets are loud and the cue cards are tiny. In a typical season of big broadcasts, a stumbled name shows up less than half the time. Most hosts recover before the next guest."
+  },
+  {
+    "category": "Pop culture",
+    "tag": "Vibes",
+    "likelihood": 23,
+    "question": "Will a franchise announce a third film before the second one opens?",
+    "reasoning": "Studios like a plan, but they usually wait for a weekend of ticket news. In a typical decade, an early third-film announcement happens about twice in ten cycles. Patience is the more common pose."
+  },
+  {
+    "category": "Pop culture",
+    "tag": "Base rate",
+    "likelihood": 36,
+    "question": "Will a streaming service drop a surprise episode at midnight?",
+    "reasoning": "Most episodes arrive when the schedule said they would. A typical year of big shows springs a midnight drop about a third of the time. The calendar is still the main character."
+  },
+  {
+    "category": "Pop culture",
+    "tag": "Base rate",
+    "likelihood": 64,
+    "question": "Will a toy aisle restock a sold-out figure within a month?",
+    "reasoning": "A sold-out peg is often a shipping pause, not a permanent exit. In a typical month of ordinary figures, about six in ten return before the next moon. The chase variants take longer."
+  },
+  {
+    "category": "Pop culture",
+    "tag": "Base rate",
+    "likelihood": 71,
+    "question": "Will a comic convention panel run past its scheduled slot?",
+    "reasoning": "Panels start with good intentions and a clock that nobody watches. Across a typical convention weekend, about seven in ten panels spill past the printed minute. The hallway crowd already expects it."
+  },
+  {
+    "category": "Pop culture",
+    "tag": "Base rate",
+    "likelihood": 66,
+    "question": "Will a celebrity book club pick a novel that was already selling well?",
+    "reasoning": "Book clubs love a discovery and also love a book people can find. In a typical year of picks, about two thirds were already moving before the announcement. The cold start is rarer than the bump."
+  },
+  {
+    "category": "Pop culture",
+    "tag": "Base rate",
+    "likelihood": 88,
+    "question": "Will a new theme park ride show a 20 minute standby in opening week?",
+    "reasoning": "Opening week is a queue with a ribbon on it. In a typical decade of new rides, nearly nine in ten post a 20 minute wait while the paint is still fresh. The empty morning comes later."
+  },
+  {
+    "category": "Pop culture",
+    "tag": "Vibes",
+    "likelihood": 14,
+    "question": "Will a late-night joke still be quoted a year later?",
+    "reasoning": "Most monologue jokes live for a night and a group chat. Across a typical year of bits, only a small handful are still quoted twelve months on. The archive is deep and the memory is short."
+  },
+  {
+    "category": "Pop culture",
+    "tag": "Base rate",
+    "likelihood": 39,
+    "question": "Will a soundtrack single outlive the movie that introduced it?",
+    "reasoning": "Some songs leave the film behind, and many stay in the credits. In a typical decade of soundtrack singles, about four in ten are still played after the movie has left theaters. The rest stay attached to the story."
+  },
+  {
+    "category": "Pop culture",
+    "tag": "Vibes",
+    "likelihood": 77,
+    "question": "Will a detailed cosplayer at a big convention be asked for a photo within ten minutes?",
+    "reasoning": "A careful costume is a walking hello. On a typical busy convention floor, about three quarters of those builds get a photo request inside ten minutes. The quiet corners are the exception."
+  },
+  {
+    "category": "Pop culture",
+    "tag": "Vibes",
+    "likelihood": 58,
+    "question": "Will a trailer dropped on Thursday pass a million views by Friday?",
+    "reasoning": "A Thursday drop has a night and a morning to travel. For a typical studio trailer with a known title, a little over half clear a million views before Friday night. Smaller films take the scenic route."
+  },
+  {
+    "category": "Pop culture",
+    "tag": "Vibes",
+    "likelihood": 44,
+    "question": "Will a spinoff keep the original theme song?",
+    "reasoning": "Lawyers, composers, and nostalgia all get a vote. In a typical run of spinoffs, the old theme survives a bit under half the time. A new sting is just as common."
+  },
+  {
+    "category": "Pop culture",
+    "tag": "Vibes",
+    "likelihood": 19,
+    "question": "Will a blooper reel run longer than the scene it came from?",
+    "reasoning": "Most gag reels are a minute of flubs, not a second movie. Across ordinary home-video extras, a blooper that outlasts its scene happens about twice in ten. The short laugh wins."
+  },
+  {
+    "category": "Pop culture",
+    "tag": "Base rate",
+    "likelihood": 91,
+    "question": "Will a fandom wiki page get edited the same day a finale airs?",
+    "reasoning": "Finales are homework for volunteers. In a typical decade of big endings, about nine in ten wiki pages move on the same day. Someone is always waiting with the plot section open."
+  },
+  {
+    "category": "Pop culture",
+    "tag": "Vibes",
+    "likelihood": 53,
+    "question": "Will a limited popcorn bucket sell out before a movie's second weekend?",
+    "reasoning": "A novelty bucket is half souvenir and half snack. Across a typical opening, about half are gone before the second weekend. The plain bucket stays."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Base rate",
+    "likelihood": 27,
+    "question": "Will a new dance trend still be posted a month later?",
+    "reasoning": "Dance sounds travel fast and cool off faster. In a typical month of new moves, only about a quarter are still being posted four weeks on. The audio page tells the truth."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Vibes",
+    "likelihood": 73,
+    "question": "Will a group chat screenshot lose the joke once it is public?",
+    "reasoning": "In-jokes need the room they were born in. Across ordinary leaks of a funny thread, about seven in ten land flatter in public than they did at home. Context was the punchline."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Base rate",
+    "likelihood": 96,
+    "question": "Will someone comment first under a video that already has a million views?",
+    "reasoning": "A million-view video has already collected a crowd. In a typical case the early comments include at least one person announcing they are first, even when they are not. The bit refuses to die."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Vibes",
+    "likelihood": 11,
+    "question": "Will a busy comment section stay kind for a whole afternoon?",
+    "reasoning": "A quiet thread can be decent. A busy one usually finds an argument before the afternoon is over. Across ordinary viral posts, a fully kind afternoon happens about one time in ten."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Base rate",
+    "likelihood": 68,
+    "question": "Will an old meme account post a format it already used last year?",
+    "reasoning": "Formats are tools, and accounts reuse the ones that worked. In a typical year, about two thirds of veteran meme pages bring back a layout from the year before. Novelty is optional."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Vibes",
+    "likelihood": 33,
+    "question": "Will a loading spinner last longer than the clip it precedes?",
+    "reasoning": "Most clips outlast the spinner. On a typical slow connection, about a third of short videos make you wait longer than the video itself. The spinner is the opening act nobody asked for."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Vibes",
+    "likelihood": 18,
+    "question": "Will a reply actually outscore the post it is answering?",
+    "reasoning": "The original post has the head start. Across ordinary attempts to outscore it, the reply wins about two times in ten. The rest stay underneath, which is where replies live."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Base rate",
+    "likelihood": 62,
+    "question": "Will a Wikipedia session pass six articles in one sitting?",
+    "reasoning": "One question becomes a blue link, then another. In a typical curious evening, about six in ten sessions pass six articles before the tab is closed. The first page was only the door."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Base rate",
+    "likelihood": 84,
+    "question": "Will a livestream chat repeat the same emote for a full minute?",
+    "reasoning": "Chats love a chorus. On a typical lively stream, about eight in ten rooms hammer one emote for a minute at least once. The message is the repetition."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Vibes",
+    "likelihood": 93,
+    "question": "Will a day-in-my-life video skip the boring parts?",
+    "reasoning": "Nobody films the full wait at the sink. Across ordinary day-in-the-life edits, more than nine in ten leave out the dull middle. The day was longer than the video."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Base rate",
+    "likelihood": 79,
+    "question": "Will a password reset email arrive in under two minutes?",
+    "reasoning": "Reset mail is one of the few emails that still hurries. In a typical batch, about eight in ten land inside two minutes. The rest are sitting in a spam folder, pretending to be late."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Base rate",
+    "likelihood": 47,
+    "question": "Will a recommended video be one you already watched?",
+    "reasoning": "Recommendation rows have a memory and a blind spot. Across ordinary evenings, a bit under half of the top suggestions are something already finished. The row is confident, and you were already there."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Base rate",
+    "likelihood": 55,
+    "question": "Will a forum thread from years ago still answer the question?",
+    "reasoning": "Old threads age in public. In a typical search, a little over half of the ancient posts still contain the fix. The other half describe a button that moved."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Vibes",
+    "likelihood": 38,
+    "question": "Will someone caption a pet photo with the wrong song lyric?",
+    "reasoning": "Pet photos attract confident captions. Across a typical week of them, a mismatched lyric shows up a bit under four times in ten. The pet remains unbothered."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Vibes",
+    "likelihood": 42,
+    "question": "Will a quick poll still be collecting votes the next day?",
+    "reasoning": "Quick is a mood, not a timer. In a typical batch of casual polls, about four in ten are still open after a day. The rest were decided before lunch."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Base rate",
+    "likelihood": 86,
+    "question": "Will an unsubscribe link be smaller than the logo above it?",
+    "reasoning": "Newsletters know which pixel pays. Across ordinary marketing mail, the unsubscribe line is smaller than the logo about eight or nine times in ten. The logo did not wander there by accident."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Vibes",
+    "likelihood": 29,
+    "question": "Will a viral recipe skip a step that matters?",
+    "reasoning": "Most viral recipes are complete enough to eat. In a typical dozen, about three leave out a step you notice halfway through. The comments then become the real method."
+  },
+  {
+    "category": "Memes and internet",
+    "tag": "Base rate",
+    "likelihood": 74,
+    "question": "Will the nobody-colon meme format show up again this month?",
+    "reasoning": "That setup is a cockroach in a nice font. Across ordinary months on large platforms, it reappears about three weeks in four. Retirement keeps getting postponed."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Base rate",
+    "likelihood": 70,
+    "question": "Will a heist movie explain the plan twice?",
+    "reasoning": "Heist plots like a diagram and a reminder. In a typical decade of them, about seven in ten walk through the plan a second time before the job. The audience is part of the crew."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Base rate",
+    "likelihood": 76,
+    "question": "Will the detective's hunch be right by the last act?",
+    "reasoning": "Mysteries are allowed one wrong turn and a correct ending. Across ordinary detective films, the hunch is right by the last act about three quarters of the time. The red herrings are for the middle."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Vibes",
+    "likelihood": 34,
+    "question": "Will a horror film cut to a cat before the real scare?",
+    "reasoning": "The fake-out cat is a classic and not a requirement. In a typical batch of horror films, about a third use the animal beat before the real one. The rest go straight for the door."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Base rate",
+    "likelihood": 45,
+    "question": "Will a season finale cliffhanger be softened in the next premiere?",
+    "reasoning": "Cliffhangers promise chaos and premieres have to keep a show alive. Across ordinary serialized seasons, a bit under half walk the danger back in episode one. The rest pick up the pieces for real."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Base rate",
+    "likelihood": 81,
+    "question": "Will the credits on a blockbuster run past three minutes?",
+    "reasoning": "Big films have big crews. In a typical decade of blockbusters, about eight in ten credit rolls pass three minutes. The songs during them are doing a job."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Vibes",
+    "likelihood": 63,
+    "question": "Will a time-travel plot contradict itself on a rewatch?",
+    "reasoning": "Time travel has too many doors. Across ordinary films that use it, a careful second viewing finds a snag about six times in ten. The first viewing was having too much fun to mind."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Base rate",
+    "likelihood": 52,
+    "question": "Will a sitcom bottle episode stay inside the apartment?",
+    "reasoning": "Bottle episodes save a set and a budget. In a typical long-running sitcom, about half of those episodes never leave the main room. The hallway still counts as travel."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Vibes",
+    "likelihood": 28,
+    "question": "Will the mentor survive a whole trilogy?",
+    "reasoning": "Mentors have a dangerous job description. Across ordinary trilogies, the guide is still standing at the end about three times in ten. The speech usually lands before the exit."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Base rate",
+    "likelihood": 67,
+    "question": "Will a cooking-show timer beep during the final plate?",
+    "reasoning": "The clock is a character. In a typical season of timed cooking shows, the beep arrives during the last plates about two thirds of the time. Somebody is always wiping a rim in a hurry."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Vibes",
+    "likelihood": 40,
+    "question": "Will a documentary leave a long pause in the interview?",
+    "reasoning": "Some editors protect the silence and some fill it. Across ordinary interview docs, a long pause survives the cut about four times in ten. The rest get a polite trim."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Base rate",
+    "likelihood": 88,
+    "question": "Will a family cartoon hide a joke meant for adults in the background?",
+    "reasoning": "Family animation has been doing this for decades. In a typical run of them, nearly nine in ten plant at least one background joke for the grownups. The kids are watching the dragon."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Vibes",
+    "likelihood": 21,
+    "question": "Will the previously-on recap spoil the cold open?",
+    "reasoning": "Recaps are supposed to set the table, not eat the meal. Across ordinary premieres, the recap gives away the cold open about one time in five. Editors usually notice in time."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Base rate",
+    "likelihood": 59,
+    "question": "Will a courtroom drama bring in one surprise witness?",
+    "reasoning": "Courtroom stories love a door opening late. In a typical decade of them, a surprise witness appears a bit over half the time. The objection is part of the rhythm."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Base rate",
+    "likelihood": 49,
+    "question": "Will a holiday special reuse last year's set?",
+    "reasoning": "Holiday sets are expensive and already red. Across ordinary annual specials, about half reuse the previous set with new tinsel. The other half rebuild the same living room anyway."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Vibes",
+    "likelihood": 54,
+    "question": "Will a series finale bring back a character from the first season?",
+    "reasoning": "Finales like a circle. In a typical long series, a bit over half invite a season-one face back for the ending. The rest trust the people who stayed."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Vibes",
+    "likelihood": 37,
+    "question": "Will a musical number start with a single piano note?",
+    "reasoning": "The single note is a mood, not a rule. Across ordinary musical numbers, it opens the song a bit under four times in ten. Plenty of them start with a drum and no warning."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Vibes",
+    "likelihood": 83,
+    "question": "Will the monster be scarier before you see it clearly?",
+    "reasoning": "Imagination has a bigger budget than latex. In a typical horror film, the unseen stretch is the scary one about eight times in ten. The full look is often a relief."
+  },
+  {
+    "category": "Movies and TV",
+    "tag": "Base rate",
+    "likelihood": 46,
+    "question": "Will a pilot introduce more than eight named characters?",
+    "reasoning": "Pilots have a lot to introduce and a short runtime. Across ordinary first episodes, a bit under half name more than eight people. The rest let you learn two faces at a time."
+  },
+  {
+    "category": "Music",
+    "tag": "Base rate",
+    "likelihood": 85,
+    "question": "Will a three-minute pop song put the chorus before the one-minute mark?",
+    "reasoning": "Radio pop learned this shape a long time ago. In a typical chart run, about eight or nine in ten three-minute songs reach the chorus before a minute is gone. The verse is a hallway."
+  },
+  {
+    "category": "Music",
+    "tag": "Base rate",
+    "likelihood": 90,
+    "question": "Will an encore include the biggest hit?",
+    "reasoning": "Encores are a contract with the room. Across ordinary arena shows, about nine in ten save a known hit for the return. The deep cut was the middle of the set."
+  },
+  {
+    "category": "Music",
+    "tag": "Vibes",
+    "likelihood": 31,
+    "question": "Will a guitar solo run longer than the verse?",
+    "reasoning": "Solos feel endless and are often short. In a typical rock song, the solo outlasts the verse about three times in ten. The rest wave and get out of the way."
+  },
+  {
+    "category": "Music",
+    "tag": "Base rate",
+    "likelihood": 35,
+    "question": "Will a festival set start within fifteen minutes of the printed time?",
+    "reasoning": "Festival clocks are suggestions with wristbands. Across a typical weekend, only about a third of sets start inside a fifteen-minute window. The schedule was printed in hope."
+  },
+  {
+    "category": "Music",
+    "tag": "Vibes",
+    "likelihood": 60,
+    "question": "Will a vinyl repress sell out its first colorway?",
+    "reasoning": "Colorways are catnip for people who already own the album. In a typical small repress, about six in ten first colors sell through. Black vinyl stays for the rest of us."
+  },
+  {
+    "category": "Music",
+    "tag": "Base rate",
+    "likelihood": 43,
+    "question": "Will a ballad change key in the last chorus?",
+    "reasoning": "The key change is a tradition, not a requirement. Across ordinary ballads, a bit over four in ten lift the last chorus. The others stay in the key they started."
+  },
+  {
+    "category": "Music",
+    "tag": "Base rate",
+    "likelihood": 24,
+    "question": "Will a live album include at least one false start?",
+    "reasoning": "Most live albums are tidied before you hear them. In a typical decade of official live records, a false start survives about a quarter of the time. The rest were charming and then deleted."
+  },
+  {
+    "category": "Music",
+    "tag": "Vibes",
+    "likelihood": 72,
+    "question": "Will a playlist named focus include a song with lyrics?",
+    "reasoning": "Focus playlists promise instrumental calm and then sneak in a chorus. Across ordinary ones, about seven in ten include at least one song with words. Concentration is on its own."
+  },
+  {
+    "category": "Music",
+    "tag": "Vibes",
+    "likelihood": 51,
+    "question": "Will the bridge be the best part and still get skipped?",
+    "reasoning": "Bridges do the interesting work in the part people jump. In a typical listening session, about half of beloved bridges still get skipped on the second pass. The chorus has the remote."
+  },
+  {
+    "category": "Music",
+    "tag": "Base rate",
+    "likelihood": 66,
+    "question": "Will a band tune on stage before the first song?",
+    "reasoning": "Some rooms tune in the dark and some do it in front of you. Across ordinary club shows, about two thirds tune where you can see it. The lights come up on a peg, not a chord."
+  },
+  {
+    "category": "Music",
+    "tag": "Base rate",
+    "likelihood": 78,
+    "question": "Will a holiday song return to daytime radio in December?",
+    "reasoning": "December has a short memory and a long playlist. In a typical year, familiar holiday songs are back on daytime radio about eight times in ten once the month turns. The other stations hold out for a week."
+  },
+  {
+    "category": "Music",
+    "tag": "Vibes",
+    "likelihood": 40,
+    "question": "Will a drummer count the band in out loud?",
+    "reasoning": "Clicks and nods do a lot of quiet work. Across ordinary shows, an audible count-in happens about four times in ten. The rest start on a look."
+  },
+  {
+    "category": "Music",
+    "tag": "Base rate",
+    "likelihood": 69,
+    "question": "Will a deluxe edition add fewer than five new songs?",
+    "reasoning": "Deluxe often means a few extras, not a second album. In a typical release cycle, about seven in ten deluxe editions add fewer than five songs. The original track list did the heavy lifting."
+  },
+  {
+    "category": "Music",
+    "tag": "Base rate",
+    "likelihood": 87,
+    "question": "Will someone in the crowd record a whole song in portrait?",
+    "reasoning": "Vertical video won the room. At a typical show, nearly nine in ten songs are captured sideways by somebody. The stage is wide and the phone is not."
+  },
+  {
+    "category": "Music",
+    "tag": "Vibes",
+    "likelihood": 74,
+    "question": "Will a music video cut on the snare?",
+    "reasoning": "Editors love a hit they can see. Across ordinary performance videos, the cut lands with the snare about three quarters of the time. The other cuts are showing off."
+  },
+  {
+    "category": "Music",
+    "tag": "Base rate",
+    "likelihood": 80,
+    "question": "Will an acoustic version be slower than the single?",
+    "reasoning": "Unplugged usually means more air. In a typical pair of recordings, the acoustic take is slower about eight times in ten. Speed was living in the drum machine."
+  },
+  {
+    "category": "Music",
+    "tag": "Base rate",
+    "likelihood": 58,
+    "question": "Will the drop in a dance track arrive within 45 seconds?",
+    "reasoning": "Dance records tease, but not forever. Across ordinary club tracks, a bit over half drop inside 45 seconds. The long buildup is a specialty, not the default."
+  },
+  {
+    "category": "Music",
+    "tag": "Vibes",
+    "likelihood": 64,
+    "question": "Will some band record a well-known jazz standard this year?",
+    "reasoning": "Standards exist so someone can play them again. In a typical year, a familiar jazz tune gets a new recording more often than not. The song stays, and the players are new."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Base rate",
+    "likelihood": 56,
+    "question": "Will the home side score first?",
+    "reasoning": "Home crowds do not score, but they come with a small edge. Across a typical decade of league games, the home side scores first a little more than half the time. The road team still gets the other half."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Base rate",
+    "likelihood": 18,
+    "question": "Will a random league soccer match finish 1 to 0?",
+    "reasoning": "Plenty of matches stay tight, and 1 to 0 is only one of those shapes. In a typical league season, fewer than two games in ten end exactly that way. Nil nil and 2 to 1 take their share."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Base rate",
+    "likelihood": 9,
+    "question": "Will a random baseball game reach extra innings?",
+    "reasoning": "Nine innings are usually enough. Across a typical season, fewer than one game in ten needs extras. The rest find a winner before the tenth."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Vibes",
+    "likelihood": 61,
+    "question": "Will the underdog be the better story by Monday?",
+    "reasoning": "Favorites win more boxes. Underdogs win more retellings. Across a typical weekend, the less favored side supplies the Monday story a bit over half the time, win or lose."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Vibes",
+    "likelihood": 70,
+    "question": "Will a coach clap once before calling a timeout?",
+    "reasoning": "Sideline body language is a dialect. In a typical game, a single clap shows up before a timeout about seven times in ten. The clipboard was already in motion."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Base rate",
+    "likelihood": 92,
+    "question": "Will a tennis match include at least one ten-shot rally?",
+    "reasoning": "Even big servers trade a few long points. Across ordinary matches, more than nine in ten include a rally of ten shots somewhere. The ace compilation leaves those out."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Base rate",
+    "likelihood": 64,
+    "question": "Will a golf leaderboard change after the 15th hole on Sunday?",
+    "reasoning": "Sunday afternoons are built for a moving card. In a typical final round, the lead or the chasing pack shifts after the 15th about two thirds of the time. The last three holes are a different sport."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Base rate",
+    "likelihood": 12,
+    "question": "Will a marathon winner break the old course record?",
+    "reasoning": "Course records are stubborn on purpose. Across a typical decade of the same race, the winner beats the old mark about once in eight runnings. Fast days are famous because they are rare."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Vibes",
+    "likelihood": 48,
+    "question": "Will a penalty kick go to the keeper's left?",
+    "reasoning": "Left and right are a guessing game with a small lean, not a code. Across ordinary spot kicks, the ball goes to the keeper's left a bit under half the time. The middle stays available and underused."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Base rate",
+    "likelihood": 18,
+    "question": "Will a random hockey game include a fight?",
+    "reasoning": "Highlight reels remember every fight and skip the quiet nights. In a typical recent season, a fight shows up in fewer than two games in ten. The whistle does most of the talking."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Base rate",
+    "likelihood": 70,
+    "question": "Will the team ahead at halftime win a basketball game?",
+    "reasoning": "A halftime lead is a head start, not a trophy. Across a typical league season, the team in front at the half wins about seven games in ten. Comebacks are why the second half exists."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Base rate",
+    "likelihood": 8,
+    "question": "Will a relay team drop the baton at a championship meet?",
+    "reasoning": "Baton passes are practiced until they look boring, which is the point. At a typical championship, a drop happens in well under one exchange in ten. The groan is loud because the miss is rare."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Base rate",
+    "likelihood": 33,
+    "question": "Will a club player flag on time in a rapid chess game?",
+    "reasoning": "Rapid clocks punish a long think. Across ordinary club rapid games, about a third end with a flag rather than a checkmate. The rest finish while both clocks still have a sliver."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Vibes",
+    "likelihood": 27,
+    "question": "Will the crowd do the wave at least once?",
+    "reasoning": "The wave needs boredom and a leader. In a typical regular-season game, it happens about a quarter of the time. Playoff crowds are often too busy yelling."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Vibes",
+    "likelihood": 44,
+    "question": "Will one referee call get booed by both sides?",
+    "reasoning": "Some whistles annoy only one bench. Across ordinary games, a call that both crowds dislike shows up a bit under half the time. Neutrality is not the same as popularity."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Base rate",
+    "likelihood": 36,
+    "question": "Will the less favored side win outright on a random Saturday?",
+    "reasoning": "Favorites are favorites for a reason. Across a typical decade of even-looking slates, the less favored side wins about three or four games in ten. That is enough to keep the group chat loud."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Vibes",
+    "likelihood": 50,
+    "question": "Will overtime feel fairer than a coin flip and play about the same?",
+    "reasoning": "Extra time has running and sweat, which makes it feel earned. The result is still close to a coin flip between two tired teams. Feeling fair and being a toss-up can both be true."
+  },
+  {
+    "category": "Sports banter",
+    "tag": "Base rate",
+    "likelihood": 22,
+    "question": "Will a field goal try from midfield be good?",
+    "reasoning": "Long kicks make the highlight because they are not the usual make. Across ordinary tries from midfield range, about one in five goes through. The rest become a punt in disguise."
+  },
+  {
+    "category": "Food",
+    "tag": "Vibes",
+    "likelihood": 38,
+    "question": "Will the pizza arrive lukewarm?",
+    "reasoning": "Most pies survive the trip. Across ordinary deliveries, a bit under four in ten show up cooler than you hoped. The box is an insulator with a time limit."
+  },
+  {
+    "category": "Food",
+    "tag": "Base rate",
+    "likelihood": 71,
+    "question": "Will someone at the table say it needs more salt?",
+    "reasoning": "Salt opinions are a side dish. In a typical shared meal, about seven in ten include one person who wants another pinch. The cook already salted it."
+  },
+  {
+    "category": "Food",
+    "tag": "Base rate",
+    "likelihood": 68,
+    "question": "Will a new neighborhood restaurant still be open two years later?",
+    "reasoning": "The scary failure stories are louder than the ordinary survivors. In a typical group of ten new neighborhood places, about seven are still serving two years on. The menu may have shrunk."
+  },
+  {
+    "category": "Food",
+    "tag": "Vibes",
+    "likelihood": 22,
+    "question": "Will the avocado be perfect on the day you need it?",
+    "reasoning": "Avocados have a window measured in hours. Across ordinary weeks, the one you bought is perfect on the planned day about twice in ten. Yesterday it was a rock, and tomorrow it is guacamole by force."
+  },
+  {
+    "category": "Food",
+    "tag": "Vibes",
+    "likelihood": 41,
+    "question": "Will a sourdough starter survive a two-week vacation?",
+    "reasoning": "A starter is a pet that eats flour. Across ordinary trips of two weeks, about four in ten starters come back lively without a rescue feeding. The rest need a pep talk and rye."
+  },
+  {
+    "category": "Food",
+    "tag": "Base rate",
+    "likelihood": 80,
+    "question": "Will the office microwave smell like popcorn by midafternoon?",
+    "reasoning": "Somebody always has a bag. In a typical office day, the microwave carries a popcorn note by midafternoon about eight times in ten. The fish day is a different genre."
+  },
+  {
+    "category": "Food",
+    "tag": "Base rate",
+    "likelihood": 64,
+    "question": "Will a diner refill the coffee before you ask?",
+    "reasoning": "Diners run on eye contact and a pot. Across ordinary counter seats, the refill arrives unasked about two thirds of the time. The cup was part of the conversation."
+  },
+  {
+    "category": "Food",
+    "tag": "Vibes",
+    "likelihood": 58,
+    "question": "Will the middle french fry be the cold one?",
+    "reasoning": "Bags cool from the center out less than you think, and still the middle one disappoints. In a typical carton, the center fry is the cool one a bit over half the time. The corner fry knew the heat lamp."
+  },
+  {
+    "category": "Food",
+    "tag": "Base rate",
+    "likelihood": 76,
+    "question": "Will a barbecue cook say five more minutes and then take twenty?",
+    "reasoning": "Low and slow has its own clock. Across ordinary backyard cooks, the five more minutes becomes twenty about three quarters of the time. The guests were warned by the smoke."
+  },
+  {
+    "category": "Food",
+    "tag": "Vibes",
+    "likelihood": 47,
+    "question": "Will the grocery store have moved the oats since last month?",
+    "reasoning": "Stores rearrange just enough to make you wander. In a typical month, the oats have moved about half the time. The milk stays put because everyone would revolt."
+  },
+  {
+    "category": "Food",
+    "tag": "Vibes",
+    "likelihood": 29,
+    "question": "Will a homemade birthday cake lean a little?",
+    "reasoning": "Home cakes are allowed a personality. Across ordinary birthday bakes, a visible lean shows up about three times in ten. Frosting is a construction material."
+  },
+  {
+    "category": "Food",
+    "tag": "Base rate",
+    "likelihood": 53,
+    "question": "Will hot sauce get added after the first bite?",
+    "reasoning": "The first bite is a test, not a verdict. At a typical table with a bottle nearby, hot sauce arrives after that bite about half the time. Some plates never needed it."
+  },
+  {
+    "category": "Food",
+    "tag": "Vibes",
+    "likelihood": 67,
+    "question": "Will leftovers taste better the next day?",
+    "reasoning": "A night in the fridge lets spices sit down together. Across ordinary stews, curries, and sauces, about two thirds taste better on day two. Lettuce is not invited to this rule."
+  },
+  {
+    "category": "Food",
+    "tag": "Base rate",
+    "likelihood": 73,
+    "question": "Will a market tomato beat the one from the crisper?",
+    "reasoning": "Season and a short trip do most of the work. In a typical summer comparison, the market tomato wins about three times in four. Winter makes the contest closer and sadder."
+  },
+  {
+    "category": "Food",
+    "tag": "Vibes",
+    "likelihood": 44,
+    "question": "Will the ice cream line be longer than the menu is interesting?",
+    "reasoning": "A good scoop shop earns a wait, and a long line can also mean one flavor. Across ordinary sunny afternoons, the line outshines the menu a bit under half the time. Vanilla is still doing its job."
+  },
+  {
+    "category": "Food",
+    "tag": "Base rate",
+    "likelihood": 36,
+    "question": "Will the first side of a pancake stay on too long?",
+    "reasoning": "The first pancake is a sacrifice and the first side is a guess. In a typical batch, about a third of opening pancakes go too far on side one. The second one has the information."
+  },
+  {
+    "category": "Food",
+    "tag": "Base rate",
+    "likelihood": 42,
+    "question": "Will someone burn the garlic?",
+    "reasoning": "Garlic goes from sweet to bitter in a few seconds. Across ordinary weeknight pans, it burns about four times in ten. The olive oil was patient and the cook was not."
+  },
+  {
+    "category": "Food",
+    "tag": "Physics says no",
+    "likelihood": 4,
+    "question": "Will a scoop of ice cream stay firm for an hour on a sunny dashboard?",
+    "reasoning": "A closed car in the sun is an oven with seats. An hour on that dashboard melts a scoop almost every time. Firm ice cream after that wait would need a different branch of physics."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Base rate",
+    "likelihood": 68,
+    "question": "Will the elevator stop at least once before the lobby?",
+    "reasoning": "Lobbies are the last stop for a reason. In a typical daytime ride of more than three floors, the car stops early about two thirds of the time. Someone always joins at floor two."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Base rate",
+    "likelihood": 45,
+    "question": "Will a pen from the junk drawer actually write?",
+    "reasoning": "Junk drawers are pen museums. Across ordinary grabs, a bit under half of the pens still make a mark. The rest are dry souvenirs."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Base rate",
+    "likelihood": 34,
+    "question": "Will the first sock you pull have its match in the same reach?",
+    "reasoning": "Dryers are chaos with a lint screen. In a typical load, the first sock finds its pair on the first reach about a third of the time. The other sock is in the sleeve."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Vibes",
+    "likelihood": 19,
+    "question": "Will the bus be early on the one morning you are late?",
+    "reasoning": "Buses run early less often than stress suggests. Across ordinary commutes, the early departure lines up with your late morning about two times in ten. Most days the bus is merely itself."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Base rate",
+    "likelihood": 81,
+    "question": "Will a group photo need a retake?",
+    "reasoning": "Someone blinks or talks. In a typical group larger than four, the first frame fails about eight times in ten. The second frame is why phones have a burst mode."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Vibes",
+    "likelihood": 52,
+    "question": "Will the umbrella be in the other bag?",
+    "reasoning": "Rain plans and bag plans rarely share a brain. Across ordinary wet mornings, the umbrella is in the bag you did not bring about half the time. The other half you look prepared."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Vibes",
+    "likelihood": 63,
+    "question": "Will the queue you switch into move slower?",
+    "reasoning": "Switching feels clever and often is not. In a typical pair of lines, the one you join after switching moves slower about six times in ten. The original line takes it personally."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Base rate",
+    "likelihood": 27,
+    "question": "Will the office printer jam on page one?",
+    "reasoning": "Printers jam, just not every time you look at them. Across ordinary short jobs, page one jams about a quarter of the time. The rest print and still feel like a victory."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Base rate",
+    "likelihood": 40,
+    "question": "Will a Monday meeting start within two minutes of the invite?",
+    "reasoning": "Calendars are optimistic documents. In a typical Monday block, the meeting starts inside a two-minute window about four times in ten. The other starts are a hunt for the link."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Vibes",
+    "likelihood": 48,
+    "question": "Will you forget why you walked into the room?",
+    "reasoning": "Doorways are famous for this and still not a guarantee. Across ordinary trips between rooms, the reason survives about half the time. The other half you open a cabinet for clues."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Base rate",
+    "likelihood": 37,
+    "question": "Will the charger already be in the room you are in?",
+    "reasoning": "Chargers migrate to the last device that was dying. In a typical evening, the one you need is already in the room about a third of the time. The rest are on a desk you left."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Vibes",
+    "likelihood": 22,
+    "question": "Will a tracking page say delivered while the box is still on the truck?",
+    "reasoning": "Scans jump ahead of porch reality now and then. Across ordinary deliveries, the premature delivered scan happens about twice in ten. The other boxes match the page."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Vibes",
+    "likelihood": 33,
+    "question": "Will the weather app and the window disagree?",
+    "reasoning": "Apps average a region and windows see one street. In a typical week, they disagree in a way you can notice about a third of the days. The cloud did not read the hourly."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Base rate",
+    "likelihood": 29,
+    "question": "Will a group chat actually settle on a time?",
+    "reasoning": "Polls and maybes multiply. Across ordinary plans for more than four people, a firm time sticks about three times in ten. The rest become a soft evening."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Base rate",
+    "likelihood": 56,
+    "question": "Will the scissors be in the knife drawer?",
+    "reasoning": "Scissors have one correct home and several actual ones. In a typical search, they are in the knife drawer a bit over half the time. The other searches end at the tape."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Vibes",
+    "likelihood": 46,
+    "question": "Will a quick errand take more than an hour?",
+    "reasoning": "Quick is the story you tell when you leave. Across ordinary errands with one stop, a bit under half expand past an hour. The extra stop was not on the list."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Base rate",
+    "likelihood": 78,
+    "question": "Will the good parking spot be taken?",
+    "reasoning": "The spot by the door is a shared myth. In a typical busy hour, it is already taken about eight times in ten. The longer walk was always the plan."
+  },
+  {
+    "category": "Everyday life",
+    "tag": "Base rate",
+    "likelihood": 43,
+    "question": "Will the houseplant get watered on the day you intended?",
+    "reasoning": "Plants live on a calendar that people mean to keep. Across ordinary weeks, the intended watering day is honored a bit over four times in ten. The plant has learned patience."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Physics says no",
+    "likelihood": 2,
+    "question": "Will a house cat reach orbit by jumping off a fridge?",
+    "reasoning": "Orbit needs many thousands of kilometers an hour, not a good crouch. A fridge jump ends in a kitchen. No cat, however confident, is clearing the atmosphere from a countertop."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Base rate",
+    "likelihood": 62,
+    "question": "Will toast that slips off a table land butter side down?",
+    "reasoning": "A typical table height gives a falling slice about half a turn before the floor. That is why butter side down shows up more often than a fair coin. A very tall table would tell a different joke."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Base rate",
+    "likelihood": 75,
+    "question": "Will an hour under a clear dark sky include at least one meteor?",
+    "reasoning": "Sporadic meteors show up even outside a named shower. On a typical clear dark night, a patient hour includes at least one. City glow is what usually cancels the show."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Vibes",
+    "likelihood": 90,
+    "question": "Will a full moon look larger when it sits near the horizon?",
+    "reasoning": "The moon is not actually bigger down low. A typical evening still makes it look that way, which is the moon illusion doing its old trick. The camera, unimpressed, shows the same disc."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Base rate",
+    "likelihood": 84,
+    "question": "Will a small backyard telescope show Saturn's rings on a steady night?",
+    "reasoning": "The rings are wide enough for modest glass. On a typical steady night, a small telescope shows them about eight times in ten tries. Blurry air is the usual villain, not the planet."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Physics says no",
+    "likelihood": 3,
+    "question": "Will a pen dropped on a space station fall to the floor like it does in a kitchen?",
+    "reasoning": "The station and the pen are both falling around Earth together. A dropped pen stays nearby instead of dropping to a floor. Kitchen gravity is the thing you left at home."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Base rate",
+    "likelihood": 97,
+    "question": "Will a person walking beat a garden snail over ten meters?",
+    "reasoning": "A garden snail takes minutes to cover a meter. A person walking finishes ten meters before the snail finishes one. The snail is consistent, and the person is simply faster."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Base rate",
+    "likelihood": 92,
+    "question": "Will water boil below 100 degrees Celsius on a high mountain?",
+    "reasoning": "Air is thinner up high, so the boiling point drops. On a typical high mountain, water boils below 100 degrees. The sea-level number is a hometown fact."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Base rate",
+    "likelihood": 95,
+    "question": "Will two magnets snap together if opposite poles are a hair apart?",
+    "reasoning": "Opposite poles pull, and a hair of air is not a shield. In a typical pair of fridge magnets, they snap as soon as you relax your grip. Same poles would shove instead."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Base rate",
+    "likelihood": 15,
+    "question": "Will a paper airplane thrown indoors stay up for more than eight seconds?",
+    "reasoning": "Indoor air is calm and the ceiling is close. Across ordinary paper planes, a flight past eight seconds happens about one time in seven. Most of them decorate the sofa sooner."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Base rate",
+    "likelihood": 88,
+    "question": "If a bright station pass goes overhead under a clear sky, will you see it without a telescope?",
+    "reasoning": "A good overhead pass is a steady moving star. Under typical clear skies, you can see it with just your eyes about nine times in ten. Clouds are the only required equipment to ruin it."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Base rate",
+    "likelihood": 86,
+    "question": "Will a banana ripen faster in a closed paper bag?",
+    "reasoning": "Bananas give off ethylene, and a bag keeps that gas nearby. In a typical kitchen test, the bagged one ripens faster about eight or nine times in ten. The counter banana takes the scenic route."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Base rate",
+    "likelihood": 93,
+    "question": "Will a helium balloon rise in a room full of ordinary air?",
+    "reasoning": "Helium is lighter than the air around it. In a typical room, the balloon goes up. A leaking balloon eventually joins the party on the floor, which is a different question."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Base rate",
+    "likelihood": 96,
+    "question": "In a vacuum, will a feather and a hammer fall together?",
+    "reasoning": "Air is what makes the feather late. Take the air away and they fall together, which is what the classic vacuum demo shows. The hammer does not get a special exemption."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Base rate",
+    "likelihood": 40,
+    "question": "Will you hear thunder from a small storm more than 20 kilometers away?",
+    "reasoning": "Sound from a small storm often fades before it has traveled 20 kilometers. Big storms carry farther. Across ordinary rumbles, hearing one from that far is a bit under half."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Base rate",
+    "likelihood": 90,
+    "question": "Will the North Star barely move in a long exposure photo?",
+    "reasoning": "The sky turns around a point very near Polaris. In a typical long exposure from the north, that star stays almost still while the others draw arcs. South of the equator you are photographing a different trick."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Base rate",
+    "likelihood": 8,
+    "question": "Will a total solar eclipse cross your exact town in the next ten years?",
+    "reasoning": "A total eclipse path is a narrow strip. Most towns wait decades between them, so a ten-year window is usually a miss. Partial shade is a much more common visitor."
+  },
+  {
+    "category": "Space and science",
+    "tag": "Physics says no",
+    "likelihood": 2,
+    "question": "Will a shout on the Moon be heard by someone standing a field away, with no radio?",
+    "reasoning": "Sound needs a medium, and the Moon has no air to carry it. A shout stays in the helmet. Across the field, silence is the whole forecast."
+  },
+  {
+    "category": "Pets",
+    "tag": "Base rate",
+    "likelihood": 72,
+    "question": "Will a cat knock something off a table this week?",
+    "reasoning": "Tables are shelves that cats audit. In a typical week with a cat and a cluttered surface, something gets nudged off about seven times in ten. The object was always a candidate."
+  },
+  {
+    "category": "Pets",
+    "tag": "Base rate",
+    "likelihood": 88,
+    "question": "Will a dog greet you like the separation was enormous?",
+    "reasoning": "Dogs do not do casual reentries. Across ordinary homecomings, even after a short trip, the full ceremony happens nearly nine times in ten. The tail was already in motion."
+  },
+  {
+    "category": "Pets",
+    "tag": "Base rate",
+    "likelihood": 91,
+    "question": "Will a cat sit in a box that is slightly too small?",
+    "reasoning": "If the box exists, the fit is a suggestion. In a typical house with a shipping box, the cat chooses the too-small one about nine times in ten. Comfort was never the brief."
+  },
+  {
+    "category": "Pets",
+    "tag": "Base rate",
+    "likelihood": 77,
+    "question": "Will a dog pick the sunny patch on the floor?",
+    "reasoning": "Sun squares move, and dogs follow them. Across ordinary afternoons, the dog is in the bright patch about three quarters of the time. The rug was only a theory."
+  },
+  {
+    "category": "Pets",
+    "tag": "Base rate",
+    "likelihood": 80,
+    "question": "Will a pet ignore the expensive toy and play with the box?",
+    "reasoning": "Packaging has crunch and novelty. In a typical unboxing, the pet chooses the box over the toy about eight times in ten. The toy gets a fair trial later, maybe."
+  },
+  {
+    "category": "Pets",
+    "tag": "Vibes",
+    "likelihood": 46,
+    "question": "Will a cat slow-blink back if you slow-blink first?",
+    "reasoning": "Some cats return a slow blink and plenty do not. Across a typical week of trying, it lands near a coin flip. The cat may have understood, and participation stays optional."
+  },
+  {
+    "category": "Pets",
+    "tag": "Base rate",
+    "likelihood": 69,
+    "question": "Will a dog bring the ball back and then refuse to release it?",
+    "reasoning": "Fetch has a negotiation phase. In a typical session, the return-and-refuse happens about seven times in ten. The game was retrieval, and the terms were unclear."
+  },
+  {
+    "category": "Pets",
+    "tag": "Vibes",
+    "likelihood": 41,
+    "question": "Will a cat sit on the keyboard during a call?",
+    "reasoning": "Calls are warm laps with extra attention. Across ordinary video calls in a cat house, the keyboard gets sat on about four times in ten. The mute button was the only plan."
+  },
+  {
+    "category": "Pets",
+    "tag": "Base rate",
+    "likelihood": 35,
+    "question": "Will a rabbit thump when a stranger walks in?",
+    "reasoning": "Thumps are alarms, not greetings. In a typical visit, a house rabbit thumps at a new person about a third of the time. The other welcomes are a cautious sniff."
+  },
+  {
+    "category": "Pets",
+    "tag": "Vibes",
+    "likelihood": 54,
+    "question": "Will a parrot pick one word and use it too often?",
+    "reasoning": "Parrots are editors with a favorite line. Across ordinary talking birds, one word gets overused about half the time. The rest of the vocabulary is on break."
+  },
+  {
+    "category": "Pets",
+    "tag": "Base rate",
+    "likelihood": 63,
+    "question": "Will a dog tilt its head at a high or odd question?",
+    "reasoning": "The tilt shows up when a sound is almost familiar. In a typical bout of silly questions, a dog tilts about six times in ten. The other questions get a blink."
+  },
+  {
+    "category": "Pets",
+    "tag": "Base rate",
+    "likelihood": 82,
+    "question": "Will a cat choose an empty bag over the cat bed?",
+    "reasoning": "Beds are purchased by humans and bags are discovered. Across ordinary evenings, the bag wins about eight times in ten. The bed remains a decorative suggestion."
+  },
+  {
+    "category": "Pets",
+    "tag": "Base rate",
+    "likelihood": 58,
+    "question": "Will a hamster run the wheel during the hour you wanted quiet?",
+    "reasoning": "Hamsters keep their own night. In a typical evening, the wheel starts during the quiet hour a bit over half the time. Earplugs are the roommate agreement."
+  },
+  {
+    "category": "Pets",
+    "tag": "Vibes",
+    "likelihood": 33,
+    "question": "Will a dog steal a sock and ignore the shoe?",
+    "reasoning": "Socks are lighter and more available. Across ordinary thefts, the sock is the target and the shoe stays put about a third of the time. The other dogs have broader taste."
+  },
+  {
+    "category": "Pets",
+    "tag": "Base rate",
+    "likelihood": 86,
+    "question": "Will a fish notice you when it is feeding time?",
+    "reasoning": "Fish learn a shadow and a schedule. At a typical feeding, they gather when you approach about eight or nine times in ten. The rest are busy being fish."
+  },
+  {
+    "category": "Pets",
+    "tag": "Base rate",
+    "likelihood": 60,
+    "question": "Will a cat chirp at a bird through the window?",
+    "reasoning": "Windows are nature documentaries with no remote. Across ordinary bird visits, a chirp or chatter happens about six times in ten. The other watches are silent and intense."
+  },
+  {
+    "category": "Pets",
+    "tag": "Base rate",
+    "likelihood": 74,
+    "question": "Will a dog wait by the door before the usual walk?",
+    "reasoning": "Dogs can read a routine better than a clock. In a typical household, the pre-walk post by the door happens about three days in four. The leash is a formality."
+  },
+  {
+    "category": "Pets",
+    "tag": "Vibes",
+    "likelihood": 79,
+    "question": "Will a kitten nap in the clean laundry?",
+    "reasoning": "Warm fabric outranks every purchased bed. Across ordinary laundry days with a kitten, the clean pile becomes a nest about eight times in ten. Folding was a temporary state."
+  }
+]
