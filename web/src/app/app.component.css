@@ -1,0 +1,116 @@
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: var(--s-3) var(--gutter);
+  background: color-mix(in srgb, var(--header) 86%, transparent);
+  -webkit-backdrop-filter: saturate(1.6) blur(16px);
+  backdrop-filter: saturate(1.6) blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+
+.top-in, .foot-in {
+  width: 100%;
+  max-width: var(--content);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.top-in {
+  gap: var(--s-2) var(--s-5);
+  min-height: 40px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  min-height: var(--tap);
+  text-decoration: none;
+  color: inherit;
+  font-family: var(--serif);
+  font-size: 20px;
+  letter-spacing: -0.03em;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--s-5);
+  margin-left: var(--s-4);
+  margin-right: auto;
+}
+
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  color: var(--muted);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.nav a.on { color: var(--ink); text-decoration-color: var(--ink); }
+.nav a:hover { color: var(--ink); }
+
+.theme {
+  border: 1px solid var(--line);
+  background: transparent;
+  border-radius: var(--radius-sm);
+  min-height: var(--tap);
+  width: 88px;
+  padding: 0;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.theme:hover { border-color: var(--ink); }
+
+.page {
+  flex: 1;
+}
+
+.foot {
+  padding: var(--s-5) var(--gutter) var(--s-6);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.foot-in { justify-content: space-between; gap: var(--s-2) var(--s-5); }
+.foot p { margin: 0; }
+
+.top, .foot {
+  transition: background-color 320ms var(--ease), color 320ms var(--ease), border-color 320ms var(--ease);
+}
+
+@media (max-width: 599px) {
+  .top { padding-block: var(--s-2); }
+  .brand { font-size: 20px; }
+  .nav { margin-left: 0; gap: 0 var(--s-4); order: 3; width: 100%; }
+  .theme { margin-left: auto; }
+  /* Compact: 60px including the hairline. The margin keeps the header's in-flow height, so nothing below shifts. */
+  .top.is-compact { padding-bottom: calc(var(--s-2) - 1px); margin-bottom: calc(var(--tap) + var(--s-2) + 1px); }
+  .top.is-compact .nav { display: none; }
+}
+
+/* v2.3: theme toggle is a soft 44 pill (no uppercase, no tracking). */
+.theme { height: var(--btn-h-md); min-height: 0; width: 88px; border: 0; border-radius: var(--r-full); background: var(--btn-soft-bg); color: var(--ink); font: 500 14px/1 var(--sans); letter-spacing: 0; text-transform: none; }
+.theme:hover { border-color: transparent; }
+@media (hover: hover) and (pointer: fine) { .theme:hover { background: var(--btn-soft-bg-hover); } }
+.theme:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }

@@ -1,0 +1,254 @@
+.result {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s-5) var(--s-4);
+}
+
+.result.updating { opacity: 0.72; }
+
+.badges { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); }
+
+.badge {
+  padding: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.badge.live { color: var(--ink); }
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-top: var(--s-4);
+}
+
+.chips label, .mode {
+  display: grid;
+  gap: var(--s-1);
+  min-height: 56px;
+  background: transparent;
+  border: 1px solid var(--field-line);
+  border-radius: var(--radius-sm);
+  padding: var(--s-2) var(--s-3);
+}
+
+.chips span {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.chips label {
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--s-2);
+  padding: var(--s-1) var(--s-3);
+}
+
+.chips input, .chips select {
+  border: 0;
+  background: transparent;
+  font-family: var(--mono);
+  font-size: 16px;
+  min-width: 0;
+  width: 100%;
+  min-height: var(--tap);
+  padding: 0;
+}
+
+.mode {
+  align-content: end;
+  grid-auto-flow: column;
+  align-content: center;
+  gap: var(--s-1);
+  padding: var(--s-1);
+}
+
+.mode button {
+  border: 1px solid var(--field-line);
+  background: transparent;
+  border-radius: var(--radius-sm);
+  width: var(--tap);
+  height: var(--tap);
+  padding: 0;
+  cursor: pointer;
+}
+
+.mode button.on {
+  background: var(--ink);
+  color: var(--paper-2);
+  border-color: transparent;
+}
+
+.assume { color: var(--muted); font-size: 14px; margin: var(--s-3) 0 0; max-width: 52ch; }
+
+.readout { margin-top: var(--s-6); }
+
+.eyebrow {
+  margin: 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.number {
+  margin: var(--s-2) 0 0;
+  font-family: var(--mono);
+  font-size: 64px;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  color: var(--signal);
+  font-variant-numeric: tabular-nums;
+}
+
+.range { margin: var(--s-3) 0 var(--s-4); color: var(--muted); }
+
+.rail {
+  position: relative;
+  height: 2px;
+  background: var(--line);
+}
+
+.rail-band, .rail-mark {
+  position: absolute;
+  top: -3px;
+  height: 8px;
+  transition: left 360ms var(--ease), width 360ms var(--ease);
+}
+
+.rail-band { background: var(--signal-soft); }
+.rail-mark {
+  width: 2px;
+  top: -4px;
+  height: 10px;
+  background: var(--signal);
+}
+
+.rail-scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--s-2);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 14px;
+}
+
+.side { margin: var(--s-4) 0 0; font-family: var(--mono); font-size: 14px; font-weight: 500; }
+.side, .side.up, .side.down { color: var(--muted); }
+
+.note {
+  margin: var(--s-5) 0 var(--s-2);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.reasoning {
+  margin: 0;
+  max-width: 52ch;
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.split {
+  display: grid;
+  gap: var(--s-6);
+  margin-top: var(--s-6);
+}
+
+h2 {
+  margin: 0 0 var(--s-3);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+ol { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-4); }
+
+li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--s-1) var(--s-3);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line);
+}
+
+li strong { font-weight: 600; }
+li span { color: var(--muted); grid-column: 2; }
+
+.step-in { animation: rise-in 320ms var(--ease) both; }
+.step-in:nth-child(2) { animation-delay: 50ms; }
+.step-in:nth-child(3) { animation-delay: 100ms; }
+.step-in:nth-child(4) { animation-delay: 150ms; }
+.step-in:nth-child(5) { animation-delay: 200ms; }
+
+.span { grid-column: 1 / -1; margin-top: var(--s-6); }
+
+.chart-box { height: 240px; }
+
+@media (min-width: 860px) {
+  .result {
+    padding: var(--s-6);
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    column-gap: var(--s-7);
+    align-items: start;
+  }
+  .badges, .chips, .assume, .readout, .note, .reasoning, .steps { grid-column: 1; }
+  .span { grid-column: 1 / -1; }
+  .split { display: contents; }
+  .steps { margin-top: var(--s-6); }
+  .chart-wrap {
+    grid-column: 2;
+    grid-row: 1 / span 7;
+    align-self: start;
+    margin-top: 0;
+    padding-left: var(--s-7);
+    border-left: 1px solid var(--line);
+  }
+  .chart-box { height: 320px; }
+}
+
+/* Field rings: the chip label is the visible field, so it carries the 2px focus ring. */
+.chips label:focus-within { border-color: var(--ink); box-shadow: 0 0 0 2px var(--ink); }
+.chips input:focus-visible, .chips select:focus-visible { outline: none; }
+/* Phones: parser fields in two even columns. */
+@media (max-width: 599px) {
+  .chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-3); }
+  .chips label { grid-template-columns: minmax(0, 1fr); row-gap: 0; padding: var(--s-1) var(--s-3); }
+  .chips label:first-child, .chips label:has(input[type=date]) { grid-column: 1 / -1; }
+  .mode { justify-content: start; }
+}
+/* Wide: steps and the path field run full width under the two-column block. */
+@media (min-width: 860px) {
+  .steps { grid-column: 1 / -1; }
+  .chart-wrap { grid-row: 1 / span 6; }
+}
+
+/* v2.3: inputs as 48 chips (44 hit area inside the 1px border) (full), the Dollars / Percent control as a segmented track (full) with a full ink thumb. */
+.chips label { min-height: 0; height: var(--btn-h-lg); border-radius: var(--r-full); padding: 0 16px; grid-template-columns: auto minmax(0, 1fr); row-gap: 0; }
+.chips input, .chips select { min-height: 0; height: 44px; }
+.chips select { min-width: 44px; }
+.mode { min-height: 0; padding: 2px; border: 0; border-radius: var(--r-full); background: var(--btn-soft-bg); gap: 0; }
+.mode button { height: var(--btn-h-md); width: var(--btn-h-md); border: 0; border-radius: var(--r-full); background: transparent; color: var(--muted); font-size: 14px; font-weight: 500; }
+/* the track is 48 (2px inset, 44 segments) so it lines up with the 48 LEVEL chip in the same row */
+.mode button.on { background: var(--ink); color: var(--paper-2); }
+@media (hover: hover) and (pointer: fine) { .mode button:hover:not(.on) { background: var(--btn-soft-bg-hover); } .mode button.on:hover { background: var(--btn-primary-bg-hover); } }
+.mode button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+@media (max-width: 599px) {
+  .chips label { grid-template-columns: auto minmax(0, 1fr); padding: 0 16px; }
+  /* select chips take a full row so the value never truncates ("above" was cut to "abo" at 390) */
+  .chips label:has(select) { grid-column: 1 / -1; }
+}

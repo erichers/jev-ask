@@ -1,0 +1,265 @@
+.fun {
+  width: min(var(--content), calc(100% - 2 * var(--gutter)));
+  margin: var(--s-8) auto var(--section);
+}
+
+.kicker, .meta, .list h2 {
+  margin: 0 0 var(--s-4);
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+h1 {
+  margin: 0;
+  max-width: 12ch;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 56px;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+
+h1 em { font-style: italic; font-weight: 450; }
+
+.lede {
+  margin: var(--s-4) 0 var(--s-6);
+  max-width: 40ch;
+  color: var(--muted);
+  font-size: 20px;
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3) var(--s-5);
+  margin-bottom: var(--s-5);
+}
+
+.shuffle, .ask-bar button {
+  border: 0;
+  background: var(--fill);
+  color: var(--on-fill);
+  border-radius: var(--radius-sm);
+  min-height: var(--tap);
+  min-width: 88px;
+  padding: 0 var(--s-5);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.shuffle:disabled, .ask-bar button:disabled { opacity: 0.6; cursor: progress; }
+
+.cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--s-3);
+}
+
+.cats button, .actions button {
+  min-height: var(--tap);
+  min-width: var(--tap);
+  border: 0;
+  background: none;
+  padding: 0 var(--s-1);
+  color: var(--muted);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.cats button.on {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--ink);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+}
+
+.cats button:hover, .actions button:hover { color: var(--ink); }
+
+.ask {
+  max-width: 800px;
+  background: var(--paper-2);
+  border: 1px solid var(--field-line);
+  border-radius: var(--radius);
+  padding: var(--s-4) var(--s-4) var(--s-4) var(--s-5);
+}
+.ask:focus-within { border-color: var(--ink); box-shadow: 0 0 0 2px var(--ink); }
+
+textarea {
+  width: 100%;
+  resize: none;
+  border: 0;
+  background: transparent;
+  font-family: var(--serif);
+  font-size: 24px;
+  line-height: 1.35;
+  min-height: 72px;
+  padding: var(--s-2) 0 0;
+}
+textarea:focus-visible { outline: none; }
+
+textarea::placeholder { color: var(--muted); opacity: 1; } /* full strength: #5e5e5e on #fff is 6.5:1 */
+
+.ask-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  margin-top: var(--s-3);
+}
+
+.ask-bar p, .note, .quiet { margin: 0; color: var(--muted); font-size: 14px; }
+.quiet { font-size: 14px; }
+
+.error { color: var(--down); margin: var(--s-4) 0 0; }
+
+.stage { perspective: 800px; margin-top: var(--s-6); }
+
+.card {
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  border-radius: var(--radius);
+  padding: var(--s-6) var(--s-6) var(--s-4);
+  transform-origin: center top;
+}
+
+.card.flip { animation: deal 400ms var(--ease); }
+
+.meter {
+  height: 2px;
+  margin: var(--s-2) 0 var(--s-5);
+  background: var(--line);
+  max-width: 280px;
+}
+
+.meter div {
+  height: 100%;
+  width: 0;
+  background: var(--signal);
+  transition: width 360ms var(--ease);
+}
+
+.card h2 {
+  margin: 0;
+  max-width: 22ch;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 40px;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+.number {
+  margin: var(--s-4) 0 var(--s-2);
+  font-family: var(--mono);
+  font-size: 64px;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  color: var(--signal);
+  font-variant-numeric: tabular-nums;
+}
+
+.reason {
+  margin: 0 0 var(--s-4);
+  max-width: 52ch;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.note { margin-bottom: var(--s-2); }
+
+.actions { display: flex; flex-wrap: wrap; gap: var(--s-5); }
+
+.list { margin-top: var(--section); }
+.list ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.list button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-4);
+  align-items: baseline;
+  text-align: left;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  min-height: 48px;
+  padding: var(--s-3) 0;
+  cursor: pointer;
+}
+.list button:hover span { text-decoration: underline; text-underline-offset: 4px; }
+.list em {
+  font-style: normal;
+  font-family: var(--mono);
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+@keyframes deal {
+  from { transform: rotateX(72deg); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .fun { margin-top: var(--s-6); }
+  h1 { font-size: 40px; }
+  .ask { padding: var(--s-4); }
+  textarea { font-size: 20px; }
+  .card { padding: var(--s-5) var(--s-4) var(--s-4); }
+  .list button { align-items: flex-start; }
+}
+
+/* One lime action per view: Ask stays filled, Shuffle is secondary. */
+.shuffle { background: transparent; color: var(--ink); border: 1px solid var(--field-line); }
+.shuffle:hover { border-color: var(--ink); }
+.cats button { padding: 0; text-align: left; }
+
+/* Space between the ask form and the Question, Match, Chance flow. */
+app-flow { display: block; margin-top: var(--s-5); }
+@media (min-width: 768px) {
+  app-flow { margin-top: var(--s-6); }
+}
+
+/* v2.3 composer: the multi-line ask box takes --r-xl 24 (a full radius would clip the serif text at its ends; the
+   single-line full exception does not fit a 72px textarea). The Ask button inside is the lime primary, a full 48 pill. */
+.ask { border-radius: var(--r-xl); padding: 24px; } /* multi-line composer: r-xl 24 with 24 inner padding, so the full Ask pill sits 25 in (concentric) */
+.ask-bar button { height: var(--btn-h-lg); min-height: 0; min-width: 88px; padding: 0 24px; border: 0; border-radius: var(--r-full); background: var(--lime); color: var(--on-lime); font: 500 16px/1 var(--sans); letter-spacing: 0; white-space: nowrap; filter: none; }
+.ask-bar button:hover { filter: none; }
+@media (hover: hover) and (pointer: fine) { .ask-bar button:hover:not(:disabled) { background: var(--lime-hover); } }
+.ask-bar button:disabled { opacity: 0.4; cursor: not-allowed; }
+.ask-bar button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+/* Shuffle: soft 44 pill. Categories: 44 chips, full, 1px field line; selected = ink fill, paper label. */
+.shuffle { height: var(--btn-h-md); min-height: 0; padding: 0 24px; border: 0; border-radius: var(--r-full); background: var(--btn-soft-bg); color: var(--ink); font: 500 14px/1 var(--sans); }
+.shuffle:hover { border-color: transparent; }
+.cats { gap: 8px; }
+.cats button { height: var(--btn-h-md); min-height: 0; padding: 0 16px; border: 1px solid var(--field-line); border-radius: var(--r-full); background: transparent; color: var(--ink); font: 500 14px/1 var(--sans); text-align: center; white-space: nowrap; }
+.cats button.on { background: var(--ink); color: var(--paper-2); border-color: var(--ink); text-decoration: none; }
+/* Card actions: secondary outline pills. */
+.actions { gap: 16px; }
+.actions button { height: var(--btn-h-md); min-height: 0; padding: 0 24px; border: 1px solid var(--btn-secondary-border); border-radius: var(--r-full); background: transparent; color: var(--ink); font: 500 14px/1 var(--sans); white-space: nowrap; }
+@media (hover: hover) and (pointer: fine) {
+  .shuffle:hover:not(:disabled) { background: var(--btn-soft-bg-hover); }
+  .cats button:hover:not(.on), .actions button:hover { background: var(--btn-ghost-bg-hover); color: var(--ink); }
+  .cats button.on:hover { background: var(--btn-primary-bg-hover); }
+}
+.shuffle:disabled { opacity: 0.4; cursor: not-allowed; }
+.shuffle:focus-visible, .cats button:focus-visible, .actions button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+/* Lists: square rows inside a 12px list card. */
+.list ul { border: 1px solid var(--line); border-radius: var(--r-md); padding: 0 16px; overflow: hidden; }
+.list li:last-child button { border-bottom: 0; }

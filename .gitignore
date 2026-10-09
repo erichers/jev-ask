@@ -1,0 +1,21 @@
+bin/
+obj/
+.vs/
+.idea/
+*.user
+*.db
+.env
+web/node_modules/
+web/dist/
+web/.angular/
+src/JevAsk.Api/data/
+
+# Local config and data: never commit
+appsettings.Production.json
+**/appsettings.Production.json
+.env
+.env.*
+!.env.example
+*.db
+*.db-*
+data/**/*.db

@@ -1,0 +1,32 @@
+<section class="stage enter">
+  <div class="tools">
+    <a routerLink="/">New question</a>
+    @if (result()) {
+      <button type="button" class="press" (click)="download()">PDF brief</button>
+    }
+  </div>
+
+  @if (loading() && !result()) {
+    <div class="skeleton" aria-busy="true" aria-label="Loading the answer">
+      <div class="sk title"></div>
+      <div class="sk number"></div>
+      <div class="sk line"></div>
+      <div class="sk line short"></div>
+      <div class="sk block"></div>
+    </div>
+  }
+
+  @if (error()) {
+    <p class="error" role="alert">{{ error() }}</p>
+  }
+
+  @if (result(); as row) {
+    <h1>{{ row.question }}</h1>
+    <app-result
+      [result]="row"
+      [theme]="theme.mode()"
+      [updating]="updating()"
+      (edited)="onEdit($event)"
+    />
+  }
+</section>

@@ -1,0 +1,32 @@
+<div class="shell">
+  <header class="top" [class.is-compact]="compact()">
+    <div class="top-in">
+    <a class="brand" routerLink="/" aria-label="Jev Ask home">
+      <svg class="mark" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true">
+        <rect x="1.25" y="1.25" width="29.5" height="29.5" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+        <path d="M9 8.5v11.2a5.3 5.3 0 0 0 5.3 5.3H20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path>
+        <path d="M21.2 10.2 24.4 13.2 21.2 16.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <span>Jev Ask</span>
+    </a>
+    <nav class="nav" aria-label="Sections" (focusin)="compact.set(false)">
+      <a routerLink="/" routerLinkActive="on" ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: true }">Markets</a>
+      <a routerLink="/fun" routerLinkActive="on" ariaCurrentWhenActive="page">Just for fun</a>
+    </nav>
+    <button type="button" class="theme press" (click)="theme.toggle()" [attr.aria-label]="theme.mode() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
+      {{ theme.mode() === 'dark' ? 'Light' : 'Dark' }}
+    </button>
+    </div>
+  </header>
+
+  <main class="page">
+    <router-outlet />
+  </main>
+
+  <footer class="foot">
+    <div class="foot-in">
+      <p>Educational tool. Not financial advice.</p>
+      <p>by Ulric studio</p>
+    </div>
+  </footer>
+</div>

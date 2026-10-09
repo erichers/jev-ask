@@ -1,0 +1,178 @@
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --paper: #f5f5f3;
+  --paper-2: #ffffff;
+  --ink: #111111;
+  --muted: #5e5e5e;
+  --line: rgba(17, 17, 17, 0.14);
+  --signal: #4f7a00;
+  --signal-soft: rgba(79, 122, 0, 0.16);
+  --fill: #cefb31;
+  --on-fill: #111111;
+  --down: #3d3d3d;
+  --up: #3d3d3d;
+  --field-line: #8c8c86;
+  --header: #f5f5f3;
+  --serif: "Newsreader", "Iowan Old Style", Palatino, Georgia, serif;
+  --sans: "Inter", "Segoe UI", sans-serif;
+  --mono: "Inter", "Segoe UI", sans-serif;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --spring: cubic-bezier(.2, .9, .2, 1);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #111111;
+  --paper-2: #191919;
+  --ink: #f4f4f2;
+  --muted: #a3a3a3;
+  --line: rgba(244, 244, 242, 0.14);
+  --signal: #cefb31;
+  --signal-soft: rgba(206, 251, 49, 0.16);
+  --fill: #cefb31;
+  --on-fill: #111111;
+  --down: #b5b5b3;
+  --up: #b5b5b3;
+  --field-line: #6b6b6b;
+  --header: #111111;
+}
+
+/* Design tokens: 8pt spacing, one type scale, one card radius. */
+:root {
+  --s-1: 4px; --s-2: 8px; --s-3: 16px; --s-4: 16px; --s-5: 24px; --s-6: 32px; --s-40: 40px;
+  --s-7: 48px; --s-8: 64px; --s-9: 80px; --s-10: 96px;
+  --gutter: 24px;
+  --content: 1120px;
+  --section: 48px;
+  --edge: max(var(--gutter), calc((100% - var(--content)) / 2));
+  --radius: 12px;
+  --radius-sm: 8px;
+  --tap: 44px;
+}
+@media (min-width: 600px) { :root { --gutter: 32px; } }
+@media (min-width: 1024px) { :root { --gutter: 64px; --section: 80px; } }
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 320ms var(--ease), color 320ms var(--ease);
+}
+
+body {
+  min-height: 100vh;
+}
+
+button, input, select, textarea { font: inherit; color: inherit; }
+p, figcaption, ul:not([class]) > li, ol:not([class]) > li { max-width: 52ch; }
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+  transition: color 180ms var(--ease), background-color 180ms var(--ease), border-color 180ms var(--ease);
+}
+
+.press {
+  transition: color 180ms var(--ease), background-color 180ms var(--ease), border-color 180ms var(--ease), transform 180ms var(--spring);
+}
+
+.press:hover { transform: translateY(-1px); }
+.press:active { transform: translateY(0) scale(0.98); }
+
+.enter > * {
+  animation: rise-in 320ms var(--ease) both;
+}
+
+.enter > *:nth-child(2) { animation-delay: 40ms; }
+.enter > *:nth-child(3) { animation-delay: 80ms; }
+.enter > *:nth-child(4) { animation-delay: 120ms; }
+.enter > *:nth-child(5) { animation-delay: 160ms; }
+.enter > *:nth-child(6) { animation-delay: 200ms; }
+.enter > *:nth-child(7) { animation-delay: 240ms; }
+.enter > *:nth-child(8) { animation-delay: 280ms; }
+.enter > *:nth-child(9) { animation-delay: 320ms; }
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+::view-transition-old(root) {
+  animation: 240ms var(--ease) both vt-out;
+}
+
+::view-transition-new(root) {
+  animation: 280ms var(--ease) both vt-in;
+}
+
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; } }
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+::selection {
+  background: var(--signal-soft);
+}
+
+html {
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Rubric v2.1: dark logo tile keeps an edge on the dark page. */
+/* One Jev mark across the apps: an outlined square with the product glyph, in ink. */
+.brand .mark { display: block; flex: none; color: var(--ink); }
+
+/* Rubric v2.3: Shape and Buttons tokens. Radius tokens only; pill buttons (lime only on Ask), outline secondary, soft
+   for dense groups; hover changes the fill, press scales to 0.98, a 2px ring follows the pill. */
+:root {
+  --r-xs: 4px; --r-sm: 8px; --r-md: 12px; --r-lg: 16px; --r-xl: 24px; --r-full: 9999px;
+  --radius: var(--r-md);
+  --radius-sm: var(--r-sm);
+  --btn-h-md: 44px; --btn-h-lg: 48px;
+  --dur-xs: 120ms; --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --btn-primary-bg: var(--ink); --btn-primary-fg: var(--paper-2);
+  --btn-primary-bg-hover: color-mix(in srgb, var(--ink) 88%, var(--paper));
+  --btn-secondary-border: var(--field-line);
+  --btn-soft-bg: color-mix(in srgb, var(--ink) 6%, transparent);
+  --btn-soft-bg-hover: color-mix(in srgb, var(--ink) 10%, transparent);
+  --btn-ghost-bg-hover: color-mix(in srgb, var(--ink) 6%, transparent);
+  --lime: #cefb31; --lime-hover: #b7df2d; --on-lime: #111111;
+}
+/* Hover is a fill change only (no lift); press is scale(0.98). */
+.press { transition: background-color var(--dur-xs) var(--ease-standard), transform var(--dur-xs) var(--ease-standard), color var(--dur-xs) var(--ease-standard); }
+.press:hover { transform: none; }
+.press:active:not(:disabled) { transform: scale(0.98); }
+@media (prefers-reduced-motion: reduce) { .press:active:not(:disabled) { transform: none; } }
+
+/* Placeholders at --muted full strength (>= 4.5:1 on every field in both schemes); no browser default. */
+::placeholder { color: var(--muted); opacity: 1; }

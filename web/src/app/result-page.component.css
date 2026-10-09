@@ -1,0 +1,61 @@
+.stage {
+  width: min(var(--content), calc(100% - 2 * var(--gutter)));
+  margin: var(--s-6) auto var(--section);
+}
+
+.tools {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--s-4);
+}
+
+.tools a, .tools button {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  color: var(--muted);
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.tools a:hover, .tools button:hover { color: var(--ink); }
+
+h1 {
+  margin: 0 0 var(--s-5);
+  max-width: 24ch;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 40px;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.error { color: var(--down); }
+
+.skeleton { display: grid; gap: 8px; }
+
+.sk {
+  border-radius: 4px;
+  background: var(--line);
+}
+
+.title { height: 36px; width: min(520px, 90%); }
+.number { height: 88px; width: min(260px, 70%); margin-top: 8px; }
+.line { height: 16px; }
+.short { width: 62%; }
+.block { height: 200px; margin-top: 8px; }
+
+@media (max-width: 640px) {
+  .stage { margin-top: var(--s-4); }
+}
+
+/* v2.3: the PDF brief button is a secondary outline pill. */
+.tools button { height: var(--btn-h-md); min-height: 0; padding: 0 24px; border: 1px solid var(--btn-secondary-border); border-radius: var(--r-full); color: var(--ink); font: 500 14px/1 var(--sans); }
+@media (hover: hover) and (pointer: fine) { .tools button:hover { background: var(--btn-ghost-bg-hover); } }
+.tools button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
